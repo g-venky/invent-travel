@@ -4,5 +4,6 @@
       <%= link_to topic.discussions, topic %><br>
       <small class="author">Submitted <%= time_ago_in_words(topic.created_at) %> by <%= topic.user.email %></small>
     </h2>
+    
   </div>
   <% end %>

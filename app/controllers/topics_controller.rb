@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-   before_action :authenticate_user!, except: [:index, :show]
+   before_action :authenticate_user!, except: [:index, :show,:edit]
   # GET /topics
   # GET /topics.json
   def index
@@ -59,6 +59,17 @@ class TopicsController < ApplicationController
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+    def upvote
+    @topic = Topic.find(params[:id])
+    @topic.upvote_by current_user
+    redirect_to :topic
+  end
+
+  def downvote
+    @topic = Topic.find(params[:id])
+    @topic.downvote_from current_user
+    redirect_to :topic
   end
 
   private
