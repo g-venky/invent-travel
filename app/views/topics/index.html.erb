@@ -1,29 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Topics</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Discussions</th>
-      <th>Details</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.discussions %></td>
-        <td><%= topic.details %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <% if topic.user==current_user %>
-          <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-          <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
+<% @topics.each do |topic| %>
+  <div class="link row clearfix">
+    <h2>
+      <%= link_to topic.discussions, topic %><br>
+      <small class="author">Submitted <%= time_ago_in_words(topic.created_at) %> by <%= topic.user.email %></small>
+    </h2>
+  </div>
+  <% end %>
