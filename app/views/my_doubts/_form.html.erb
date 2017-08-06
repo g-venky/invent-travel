@@ -1,0 +1,28 @@
+<%= form_for(@my_doubt) do |f| %>
+  <% if @my_doubt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@my_doubt.errors.count, "error") %> prohibited this my_doubt from being saved:</h2>
+
+      <ul>
+      <% @my_doubt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :Destination %><br>
+    <%= f.text_field :destination, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :Doubt_details %><br>
+    <%= f.text_field :doubt_details, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit "create my_Doubt", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>

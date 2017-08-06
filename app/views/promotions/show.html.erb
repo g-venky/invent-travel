@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="link row clearfix">
+  <h1 style="text-align: center;"><%= @promotion.title %></h1>
+</div>
+
+<div class="link row clearfix">
+  <%= image_tag @promotion.image.url(:medium) %>
+</div>
+
+<div class="link row clearfix">
+  <h1 style="text-align: left;"><%= @promotion.content %></h1>
+</div>
+
+<% if @promotion.user==current_user %>
+
+	<div class="btn-group">
+		<%= link_to 'Edit', edit_promotion_path(@promotion), class: "btn btn-default" %>
+		<%= link_to 'Back', promotions_path, class: "btn btn-default" %>
+		<%= link_to 'Destroy', @promotion, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+	</div>
+<% end %>
+<div class="btn-group pull-right">
+  <%= link_to like_promotion_path(@promotion), method: :put, class: "btn btn-primary" do %>
+    <span class="glyphicon glyphicon-chevron-up"></span>
+    Upvote
+    <%= @promotion.get_upvotes.size %>
+  <% end %>
+  <%= link_to dislike_promotion_path(@promotion), method: :put, class: "btn btn-primary" do %>
+    <span class="glyphicon glyphicon-chevron-down">
+    Downvote
+    <%= @promotion.get_downvotes.size %>
+  <% end %>
+</div>

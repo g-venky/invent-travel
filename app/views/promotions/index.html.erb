@@ -1,0 +1,13 @@
+<ul class="nav navbar-nav navbar-right">
+  <li ><%= link_to 'Add Your Promotion', new_promotion_path %></li>
+</ul>
+<% @promotions.each do |promotion| %>
+  <div class="link row clearfix">
+    
+       <h3 class="author"> <%= promotion.user.email %><small class="author"> <%= time_ago_in_words(promotion.created_at) %>  ago</small></h2> </br>
+    <h2 style="text-align: center;">
+      <%= link_to promotion.title, promotion %>
+     </h2>
+ </div>
+ <% end %>
+ 

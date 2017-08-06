@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p class="link row clearfix">
-  <strong>Discussions:</strong>
-  <%= @topic.discussions %>
-</p>
+<div class="link row clearfix">
+  <h3 style="text-align: center;">Discussions</h3></br>
+  <h3><%= @topic.discussions %></h3>
+</div>
 
-<p class="link row clearfix">
-  <strong>Details:</strong>
-  <%= @topic.details %>
-</p>
+<div class="link row clearfix">
+  <h3 style="text-align: center;">Details</h3></br>
+  <h3><%= @topic.details %></h3>
+</div>
 <% if @topic.user==current_user %>
 
 	<div class="btn-group">
@@ -18,12 +18,12 @@
 	</div>
 <% end %>
 <div class="btn-group pull-right">
-  <%= link_to like_topic_path(@topic), method: :put, class: "btn btn-default btn-sm" do %>
+  <%= link_to like_topic_path(@topic), method: :put, class: "btn btn-primary" do %>
     <span class="glyphicon glyphicon-chevron-up"></span>
     Upvote
     <%= @topic.get_upvotes.size %>
   <% end %>
-  <%= link_to dislike_topic_path(@topic), method: :put, class: "btn btn-default btn-sm" do %>
+  <%= link_to dislike_topic_path(@topic), method: :put, class: "btn btn-primary" do %>
     <span class="glyphicon glyphicon-chevron-down">
     Downvote
     <%= @topic.get_downvotes.size %>

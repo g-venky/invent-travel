@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @my_doubt.destination %>
+</p>
+
+<p>
+  <strong>Doubt details:</strong>
+  <%= @my_doubt.doubt_details %>
+</p>
+
+<%= link_to 'Edit', edit_my_doubt_path(@my_doubt) %> |
+<%= link_to 'Back', my_doubts_path %>
