@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806050841) do
+ActiveRecord::Schema.define(version: 20170806055933) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "topic_id"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20170806050841) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_promotions_on_user_id"
+  end
+
+  create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "my_doubt_id"
+    t.text "body"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["my_doubt_id"], name: "index_replies_on_my_doubt_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -88,4 +98,5 @@ ActiveRecord::Schema.define(version: 20170806050841) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
+  add_foreign_key "replies", "users"
 end

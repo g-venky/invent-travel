@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :replies
 	root to: "home#index"
 	devise_for :users
   	resources :topics do
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
       		put "dislike", to:    "promotions#downvote"
     	end
    	end
-  	resources :my_doubts
+  	resources :my_doubts do
+  		resources :replies
+  	end
 
 end
