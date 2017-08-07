@@ -7,6 +7,9 @@
 
 <div class="link row clearfix">
   <h3 style="text-align: center;">Details</h3></br>
+  <ul class="nav navbar-nav navbar-right">
+  <li ><%= link_to 'Add Your Topic', new_topic_path %></li>
+</ul>
   <h3><%= @topic.details %></h3>
 </div>
 <% if @topic.user==current_user %>
@@ -17,18 +20,7 @@
 		<%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
 	</div>
 <% end %>
-<div class="btn-group pull-right">
-  <%= link_to like_topic_path(@topic), method: :put, class: "btn btn-primary" do %>
-    <span class="glyphicon glyphicon-chevron-up"></span>
-    Upvote
-    <%= @topic.get_upvotes.size %>
-  <% end %>
-  <%= link_to dislike_topic_path(@topic), method: :put, class: "btn btn-primary" do %>
-    <span class="glyphicon glyphicon-chevron-down">
-    Downvote
-    <%= @topic.get_downvotes.size %>
-  <% end %>
-</div>
+
 <h3 class="comments_title">
   <%= @topic.comments.count %> Comments
 </h3>
