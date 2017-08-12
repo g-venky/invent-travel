@@ -4,9 +4,14 @@
 <% @topics.each do |topic| %>
   <div class="link row clearfix">
     <h2>
-      <%= link_to topic.discussions, topic %><br>
+      <%= link_to topic.discussions ,topic%><br>
       <small class="author">Submitted <%= time_ago_in_words(topic.created_at) %> by <%= topic.user.email %></small>
     </h2>
+    <h3>
+       <%= link_to topic.details ,topic %><br>
+       </h3>
 
   </div>
+
   <% end %>
+ 

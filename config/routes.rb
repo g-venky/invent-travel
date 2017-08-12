@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :companies
+  # devise_for :companies
   resources :replies
 	root to: "home#index"
 	devise_for :users

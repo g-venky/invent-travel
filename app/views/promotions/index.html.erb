@@ -1,12 +1,18 @@
-<ul class="nav navbar-nav navbar-right">
-  <li ><%= link_to 'Add Your Promotion', new_promotion_path %></li>
-</ul>
+<% if current_user.company.save -%>
+	<li><%= link_to 'your promotion', new_promotion_path %></li>
+<% else %>
+	<li><%= link_to 'Become Seller', new_company_path %></li>
+<% end %>
 <% @promotions.each do |promotion| %>
   <div class="link row clearfix">
-    
-       <h3 class="author"> <%= promotion.user.email %><small class="author"> <%= time_ago_in_words(promotion.created_at) %>  ago</small></h2> </br>
+    	 
+       <h2 class="author"> <%= promotion.user.email %><small class="author"> <%= time_ago_in_words(promotion.created_at) %>  ago</small></h2> </br>
     <h2 style="text-align: center;">
       <%= link_to promotion.title, promotion %>
+     </h2>
+     
+     <h2 style="text-align: center;">
+      <%= link_to promotion.content, promotion %>
      </h2>
  </div>
  <% end %>

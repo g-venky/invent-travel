@@ -1,3 +1,6 @@
+<ul class="nav navbar-nav navbar-right">
+  <li ><%= link_to 'Add Your Topic', new_topic_path %></li>
+</ul>
 <p id="notice"><%= notice %></p>
 
 <div class="link row clearfix">
@@ -7,9 +10,7 @@
 
 <div class="link row clearfix">
   <h3 style="text-align: center;">Details</h3></br>
-  <ul class="nav navbar-nav navbar-right">
-  <li ><%= link_to 'Add Your Topic', new_topic_path %></li>
-</ul>
+
   <h3><%= @topic.details %></h3>
 </div>
 <% if @topic.user==current_user %>
@@ -35,3 +36,6 @@
   <br>
   <%= f.submit "Add Comment", class: "btn btn-primary" %>
 <% end %>
+<ul class="nav navbar-nav navbar-left">
+  <li ><%= link_to 'Back', topics_path %></li>
+</ul>
