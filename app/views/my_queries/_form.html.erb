@@ -1,0 +1,68 @@
+<%= form_for(@my_query) do |f| %>
+  <% if @my_query.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@my_query.errors.count, "error") %> prohibited this my_query from being saved:</h2>
+
+      <ul>
+      <% @my_query.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+
+  <tbody>
+     <tr>
+       <td>
+          <div class="form-group">
+            <%= f.label :Query_Number %><br>
+            <%= f.text_field :query_number, class: "form-control" %>
+          </div>
+        </td>
+
+       <td>
+          <div class="form-group">
+            <%= f.label :Destination %><br>
+            <%= f.text_field :destination, class: "form-control" %>
+          </div>
+        </td>
+         <td>
+            <div class="form-group">
+              <%= f.label :No_of_pax %><br>
+              <%= f.text_field :pax, class: "form-control" %>
+            </div>
+        </td>
+          <td>
+             <div class="form-group">
+                <%= f.label :Travel_Date %><br>
+                <%= f.text_field :travel_date, class: "form-control" %>
+              </div>
+          </td>
+          <td>
+              <div class="form-group">
+                  <%= f.label :Duration %><br>
+                  <%= f.text_field :duration, class: "form-control" %>
+              </div>
+          </td>
+           <td>
+              <div class="form-group">
+                   <%= f.label :TourRequirements %><br>
+                  <%= f.text_field :tour_requirements, class: "form-control" %>
+              </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <%= f.label :Quotes_Received %><br>
+                     <%= f.text_field :quotes_received, class: "form-control" %>
+                </div>
+            </td>
+  
+    <tbody>
+  </table>
+  <br>
+  <div class="form-group">
+    <%= f.submit "my query", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>

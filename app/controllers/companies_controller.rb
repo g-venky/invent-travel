@@ -1,20 +1,32 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:destroy,:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!,except: [:index]
   # GET /companies
   # GET /companies.json
+
+
  def index
     @companies = Company.all
  end
   # GET /companies/1
   # GET /companies/1.json
   def show
+    if @company.user==current_user
+      redirect_to new_promotion_path
+    else
+      render 'new'
+    end
  end
   
   # GET /companies/new
-  def new
-      @company= current_user.build_company
-  end
+  def new 
+   #if current_user.company.save 
+   # redirect_to home_online_stall_path
+  #else
+      @company= current_user.build_company 
+  #end
+end
+
   # GET /companies/1/edit
   def edit
   end
@@ -23,11 +35,16 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company =current_user.build_company(company_params)
+     respond_to do |format|
       if @company.save
-          flash[:success] = redirect_to @company,notice: 'Company was successfully verified.'
+      
+      format.html { redirect_to @company, notice: 'company was successfully created.' }
+        format.json { render :show, status: :created, location: @company }
       else
-         render 'new'
+        format.html { render :new }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
       end
+    end
    end
 
 
@@ -44,6 +61,7 @@ class CompaniesController < ApplicationController
       end
     end
   end
+ 
 
   # DELETE /companies/1
   # DELETE /companies/1.json
@@ -57,7 +75,7 @@ class CompaniesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_company
+   def set_company
       @company = Company.find(params[:id])
     end
 

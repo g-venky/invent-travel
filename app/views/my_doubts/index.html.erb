@@ -1,23 +1,26 @@
 <ul class="nav navbar-nav navbar-right">
-  <li ><%= link_to 'Add My Doubt', new_promotion_path %></li>
+  <li ><%= link_to 'Add My Doubt', new_my_doubt_path %></li>
 </ul>
 <p id="notice"><%= notice %></p>
-<table>
+<table style="border: 1px solid black;">
   <thead>
     <tr>
-      <th>Destination</th>
-      <th>Doubt details</th>
+      <th style="padding: 30px">Destination</th>
+      <th style="padding: 30px">Doubt details</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @my_doubts.each do |my_doubt| %>
+    <% if current_user==my_doubt.user %>
       <tr>
-        <td><%= my_doubt.destination %></td>
-        <td><%= my_doubt.doubt_details %></td>
-        <td><%= link_to 'Edit', edit_my_doubt_path(my_doubt) %></td>
-        <td><%= link_to 'Destroy', my_doubt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="padding: 30px"><%= my_doubt.destination %></td>
+        <td style="padding: 30px"><%= my_doubt.doubt_details %></td>
+        <td style="padding: 30px"><%= link_to 'show', my_doubt %></td>
+        <td style="padding: 30px"><%= link_to 'Edit', edit_my_doubt_path(my_doubt) %></td>
+        <td ><%= link_to 'Destroy', my_doubt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

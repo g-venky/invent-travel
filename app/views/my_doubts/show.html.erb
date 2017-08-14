@@ -1,14 +1,31 @@
 <p id="notice"><%= notice %></p>
+<% if current_user==@my_doubt.user %>
+<table style="border: 1px solid black;"">
+  <thead>
+    <tr>
+      <th  style="padding: 30px;">Destination</th>
+      <th  style="padding: 30px;">Details</th>
 
-<p>
-  <strong>Destination:</strong>
-  <%= @my_doubt.destination %>
-</p>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Doubt details:</strong>
-  <%= @my_doubt.doubt_details %>
-</p>
+  <tbody>
+      <tr>
+        <td style="padding: 30px;"><%= @my_doubt.destination %></td>
+        <td style="padding: 30px;"><%= @my_doubt.doubt_details %></td>
+     
+        <td style="padding: 30px;"><%= link_to 'Edit', edit_my_doubt_path(@my_doubt) %></td>
+        <td style="padding: 30px">	<%= link_to 'Back', my_doubts_path %></td>
+      
+       
+      </tr>
+    
+  </tbody>
+</table>
+<% else %>
+	<%= link_to 'My Doubt', new_my_doubt_path %>
+<% end %>
 
-<%= link_to 'Edit', edit_my_doubt_path(@my_doubt) %> |
-<%= link_to 'Back', my_doubts_path %>
+
+

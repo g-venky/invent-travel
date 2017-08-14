@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812131436) do
+ActiveRecord::Schema.define(version: 20170814151538) do
+
+  create_table "abouts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "about_us"
+    t.text "destination"
+    t.text "contact"
+    t.text "office"
+    t.text "travel_segment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "topic_id"
@@ -31,6 +41,13 @@ ActiveRecord::Schema.define(version: 20170812131436) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "destinations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "destination"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "promotion_id"
+  end
+
   create_table "my_doubts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "destination"
     t.text "doubt_details"
@@ -40,11 +57,25 @@ ActiveRecord::Schema.define(version: 20170812131436) do
     t.index ["user_id"], name: "index_my_doubts_on_user_id"
   end
 
-  create_table "promotions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "title"
+  create_table "my_queries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "query_number"
+    t.text "destination"
+    t.text "pax"
+    t.text "duration"
+    t.text "tour_requirements"
+    t.integer "quotes_received"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "content"
+    t.text "travel_date"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_my_queries_on_user_id"
+  end
+
+  create_table "promotions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "destination"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "details"
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
@@ -61,6 +92,11 @@ ActiveRecord::Schema.define(version: 20170812131436) do
     t.datetime "updated_at", null: false
     t.index ["my_doubt_id"], name: "index_replies_on_my_doubt_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
+  end
+
+  create_table "stalls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
