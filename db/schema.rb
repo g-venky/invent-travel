@@ -10,16 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814151538) do
+ActiveRecord::Schema.define(version: 20170817093655) do
 
   create_table "abouts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "about_us"
-    t.text "destination"
-    t.text "contact"
-    t.text "office"
-    t.text "travel_segment"
+    t.text "write"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_abouts_on_seller_id"
+  end
+
+  create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "document_file_name"
+    t.string "document_content_type"
+    t.integer "document_file_size"
+    t.datetime "document_updated_at"
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_brouchers_on_seller_id"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -41,11 +51,20 @@ ActiveRecord::Schema.define(version: 20170814151538) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "destinations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "destination"
+  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "promotion_id"
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_contacts_on_seller_id"
+  end
+
+  create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "destinations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_deals_on_seller_id"
   end
 
   create_table "my_doubts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -71,6 +90,14 @@ ActiveRecord::Schema.define(version: 20170814151538) do
     t.index ["user_id"], name: "index_my_queries_on_user_id"
   end
 
+  create_table "offices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_offices_on_seller_id"
+  end
+
   create_table "promotions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "destination"
     t.datetime "created_at", null: false
@@ -80,8 +107,8 @@ ActiveRecord::Schema.define(version: 20170814151538) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_promotions_on_user_id"
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_promotions_on_seller_id"
   end
 
   create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -94,9 +121,53 @@ ActiveRecord::Schema.define(version: 20170814151538) do
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_reviews_on_seller_id"
+  end
+
+  create_table "segments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "travelsegments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_segments_on_seller_id"
+  end
+
+  create_table "sellers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "company_name"
+    t.string "website"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.integer "user_id"
+    t.string "region"
+    t.index ["email"], name: "index_sellers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
+    t.index ["user_id"], name: "index_sellers_on_user_id"
+  end
+
   create_table "stalls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seller_id"
+    t.index ["seller_id"], name: "index_stalls_on_seller_id"
   end
 
   create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

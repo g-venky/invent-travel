@@ -1,0 +1,19 @@
+ <% if seller_signed_in? -%>
+ 
+  <%= link_to ' contact', new_contact_path %>
+   
+
+<% end %> 
+<% @contacts.each do |contact| %>
+ 
+
+ 
+       
+    
+     
+     <h2 style="text-align: center;">
+      <%= link_to contact.address, contact %>
+     </h2>
+ </div>
+
+ <% end %>

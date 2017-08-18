@@ -14,7 +14,7 @@
   <h1 style="text-align: left;"><%= @promotion.details %></h1>
 </div>
 
-<% if @promotion.user==current_user %>
+<% if @promotion.seller==current_seller %>
 
 	<div class="btn-group">
 		<%= link_to 'Edit', edit_promotion_path(@promotion), class: "btn btn-default" %>
@@ -28,9 +28,5 @@
     Upvote
     <%= @promotion.get_upvotes.size %>
   <% end %>
-  <%= link_to dislike_promotion_path(@promotion), method: :put, class: "btn btn-primary" do %>
-    <span class="glyphicon glyphicon-chevron-down">
-    Downvote
-    <%= @promotion.get_downvotes.size %>
-  <% end %>
+ 
 </div>

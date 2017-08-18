@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
-<td><%= @about.about_us %></td>
-        <td><%= @about.destination %></td>
-           <td><%= @about.contact %></td>
-        <td><%= @about.office %></td>
-        <td><%= @about.travel_segment %></td>
-<%= link_to 'Edit', edit_about_path(@about) %> |
-<%= link_to 'Back', abouts_path %>
+
+
+
+
+
+<div class="link row clearfix">
+  <h1 style="text-align: left;"><%= @about.write %></h1>
+</div>
+
+<% if @about.seller==current_seller %>
+
+	<div class="btn-group">
+		<%= link_to 'Edit', edit_about_path(@about), class: "btn btn-default" %>
+		<%= link_to 'Back', abouts_path, class: "btn btn-default" %>
+		<%= link_to 'Destroy', @about, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+	</div>
+<% end %>

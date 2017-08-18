@@ -1,0 +1,73 @@
+<%= form_for @segment do |f| %>
+  <% if @segment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@segment.errors.count, "error") %> prohibited this segment from being saved:</h2>
+
+      <ul>
+      <% @segment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= label_tag 'travelsegments_FIT','FIT'  %>
+    <%= check_box_tag 'segment[travelsegments][]','FIT',checked('FIT'),id: 'travelsegments_FIT' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'travelsegments_Religious_culture_&_heritage_tours','Religious_culture_&_heritage_tours'  %>
+    <%= check_box_tag 'segment[travelsegments][]','Religious_culture_&_heritage_tours',checked('Religious_culture_&_heritage_tours'),id: 'travelsegments_Religious_culture_&_heritage_tours' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_Arilines','Arilines'  %>
+    <%= check_box_tag 'segment[travelsegments][]','Arilines',checked('Arilines'),id: 'travelsegments_Arilines' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_Health_&_Wellness','Health_&_Wellness'  %>
+    <%= check_box_tag 'segment[travelsegments][]','Health_&_Wellness',checked('Health_&_Wellness'),id: 'travelsegments_Health_&_Wellness' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_FIT','FIT'  %>
+    <%= check_box_tag 'segment[travelsegments][]','FIT',checked('FIT'),id: 'travelsegments_FIT' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_cruises','cruises'  %>
+    <%= check_box_tag 'segment[travelsegments][]','cruises',checked('cruises'),id: 'travelsegments_cruises' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_Railway','Railway'  %>
+    <%= check_box_tag 'segment[travelsegments][]','Railway',checked('Railway'),id: 'travelsegments_Railway' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_Adventures_&_sports_tourism','Adventures_&_sports_tourism'  %>
+    <%= check_box_tag 'segment[travelsegments][]','Adventures_&_sports_tourism',checked('Adventures_&_sports_tourism'),id: 'travelsegments_Adventures_&_sports_tourism' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_Git','Git'  %>
+    <%= check_box_tag 'segment[travelsegments][]','Git',checked('Git'),id: 'travelsegments_Git' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_Accommodation','Accommodation'  %>
+    <%= check_box_tag 'segment[travelsegments][]','Accommodation',checked('Accommodation'),id: 'travelsegments_Accommodation' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_Wedding_&_Honeymoon','Wedding_&_Honeymoon'  %>
+    <%= check_box_tag 'segment[travelsegments][]','Wedding_&_Honeymoon',checked('Wedding_&_Honeymoon'),id: 'travelsegments_Wedding_&_Honeymoon' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'travelsegments_Ticketing','Ticketing'  %>
+    <%= check_box_tag 'segment[travelsegments][]','Ticketing',checked('Ticketing'),id: 'travelsegments_Ticketing' %>
+  </div>
+
+   <div class="form-group">
+    <%= label_tag 'travelsegments_coach','coach'  %>
+    <%= check_box_tag 'segment[travelsegments][]','coach',checked('coach'),id: 'travelsegments_coach' %>
+ 
+  <br>
+  <div class="form-group">
+    <%= f.submit "segment location", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>

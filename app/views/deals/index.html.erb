@@ -1,0 +1,19 @@
+ <% if seller_signed_in? -%>
+ 
+  <%= link_to ' deal', new_deal_path %>
+   
+
+<% end %> 
+<% @deals.each do |deal| %>
+
+
+  <div class="link row clearfix">
+       
+    
+     
+     <h2 style="text-align: center;">
+      <%= link_to deal.destinations, deal %>
+     </h2>
+ </div>
+
+ <% end %>

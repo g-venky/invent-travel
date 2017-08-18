@@ -1,0 +1,21 @@
+ <% if seller_signed_in? -%>
+ 
+  <%= link_to ' office', new_office_path %>
+   
+
+<% end %> 
+<% @offices.each do |office| %>
+ 
+
+ 
+       <% if current_seller==office.seller %>
+    
+     
+     <h2 style="text-align: center;">
+      <%= link_to office.location, office %>
+     </h2>
+     <% end %>
+ </div>
+
+ <% end %>
+  

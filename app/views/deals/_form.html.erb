@@ -1,0 +1,25 @@
+<%= form_for @deal, html: {multipart: true} do |f| %>
+  <% if @deal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+
+      <ul>
+      <% @deal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= f.label :Deals_on  %><br>
+    <%= f.text_field :destinations, class: "form-control" %>
+  </div>
+ 
+  <br>
+  <div class="form-group">
+    <%= f.submit "create deal", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>

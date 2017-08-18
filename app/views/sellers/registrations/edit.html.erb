@@ -14,6 +14,17 @@
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
   </div>
+    <div class="form-group">
+    <%= label_tag 'region_Domestic','Domestic'  %>
+    <%= check_box_tag 'seller[region][]','Domestic',checked('Domestic'),id: 'region_Domestic' %>
+  </div>
+    <div class="form-group">
+    <%= label_tag 'region_Inbound','Inbound'  %>
+    <%= check_box_tag 'seller[region][]','Inbound',checked('Inbound'),id: 'region_Inbound' %>
+  </div>
+
+
+  
 
   <div class="form-actions">
     <%= f.button :submit, "Update" %>

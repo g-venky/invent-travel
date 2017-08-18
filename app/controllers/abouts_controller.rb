@@ -1,8 +1,12 @@
 class AboutsController < ApplicationController
   before_action :set_about, only: [:show, :edit, :update, :destroy]
-
+ 
   # GET /abouts
   # GET /abouts.json
+ 
+
+
+
   def index
     @abouts = About.all
   end
@@ -14,7 +18,7 @@ class AboutsController < ApplicationController
 
   # GET /abouts/new
   def new
-    @about = About.new
+    @about = current_seller.abouts.build
   end
 
   # GET /abouts/1/edit
@@ -24,7 +28,7 @@ class AboutsController < ApplicationController
   # POST /abouts
   # POST /abouts.json
   def create
-    @about = About.new(about_params)
+    @about = current_seller.abouts.build(about_params)
 
     respond_to do |format|
       if @about.save
@@ -62,6 +66,7 @@ class AboutsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_about
       @about = About.find(params[:id])
@@ -69,6 +74,6 @@ class AboutsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def about_params
-    params.require(:about).permit(:about_us,:destination,:contact,:office,:travel_segment)
+          params.require(:about).permit(:write)
     end
 end

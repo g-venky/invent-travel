@@ -1,3 +1,8 @@
+
+<header class="navbar navbar-default" role="navigation">
+    <div class="navbar-inner">
+      <div class="container">
+              <nav class="collapse navbar-collapse navbar-ex1-collapse">
 <% if user_signed_in? -%>
    <ul class="nav navbar-nav navbar-left ">
        		<li><%= link_to "Promotions" , promotions_path  %></li>
@@ -8,3 +13,8 @@
 <% else%>
 	<h1>Welcome to Invent Travel</h1>
 <% end %>
+			
+        </nav>
+      </div>
+    </div>
+  </header>

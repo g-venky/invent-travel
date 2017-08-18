@@ -1,31 +1,32 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Abouts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @abouts.each do |about| %>
-      <tr>
-        <td><%= about.about_us %></td>
-        <td><%= about.destination %></td>
-           <td><%= about.contact %></td>
-        <td><%= about.office %></td>
-        <td><%= about.travel_segment %></td>
-        <footer >
-        <td><%= link_to 'Show', about %></td>
-        <td><%= link_to 'Edit', edit_about_path(about) %></td>
-       </footer>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New About', new_about_path %>
+ <% if seller_signed_in? -%>
+ 
+  <%= link_to ' about', new_about_path %>
+   
+
+<% end %> 
+
+
+
+<% @abouts.each do |about| %>
+
+
+  <div class="link row clearfix">
+       
+    
+     
+     <h2 style="text-align: center;">
+      <%= link_to about.write, about %>
+     </h2>
+ </div>
+
+ <% end %>
+
+
+ <%= link_to 'new', new_about_path %>
+
+ 

@@ -1,15 +1,26 @@
-<%= simple_form_for(@about) do |f| %>
-  <%= f.error_notification %>
+<%= form_for @about do |f| %>
+  <% if @about.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@about.errors.count, "error") %> prohibited this about from being saved:</h2>
 
-  <div class="form-inputs">
-  <%= f.input :about_us %>
-  <%= f.input :destination %>
-  <%= f.input :contact %>
-  <%= f.input :office %>
-  <%= f.input :travel_segment %>
+      <ul>
+      <% @about.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+
+  <div class="form-group">
+    <%= f.label :about %><br>
+    <%= f.text_field :write, class: "form-control" %>
+  </div>
+ 
+  <br>
+  <div class="form-group">
+    <%= f.submit "create about", class: "btn btn-lg btn-primary" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
 <% end %>

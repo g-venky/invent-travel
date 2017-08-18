@@ -1,0 +1,29 @@
+<%= form_for @broucher, html: {multipart: true} do |f| %>
+  <% if @broucher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@broucher.errors.count, "error") %> prohibited this broucher from being saved:</h2>
+
+      <ul>
+      <% @broucher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+  <div class="form-group">
+    <%= f.label :document %><br>
+    <%= f.file_field :document, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+ 
+  <br>
+  <div class="form-group">
+    <%= f.submit "create broucher", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>

@@ -1,0 +1,19 @@
+ <% if seller_signed_in? -%>
+ 
+  <%= link_to ' segment', new_segment_path %>
+   
+
+<% end %> 
+<% @segments.each do |segment| %>
+ 
+
+ 
+       
+    
+     
+     <h2 style="text-align: center;">
+      <%= link_to segment.travelsegments, segment %>
+     </h2>
+ </div>
+
+ <% end %>

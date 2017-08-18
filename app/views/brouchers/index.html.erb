@@ -1,0 +1,21 @@
+<% @brouchers.each do |broucher| %>
+ <% if seller_signed_in? -%>
+ 
+  <%= link_to ' broucher', new_broucher_path %>
+   
+
+<% end %> 
+
+  <div class="link row clearfix">
+       
+    
+    <h2 style="text-align: center;">
+      <%= link_to broucher.document, broucher %>
+     </h2>
+     
+     <h2 style="text-align: center;">
+      <%= link_to broucher.title, broucher %>
+     </h2>
+ </div>
+
+ <% end %>

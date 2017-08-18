@@ -14,7 +14,7 @@ class PromotionsController < ApplicationController
 
   # GET /promotions/new
   def new
-    @promotion = current_user.promotions.build
+    @promotion = current_seller.promotions.build
   end
 
   # GET /promotions/1/edit
@@ -24,7 +24,7 @@ class PromotionsController < ApplicationController
   # POST /promotions
   # POST /promotions.json
   def create
-    @promotion = current_user.promotions.build(promotion_params)
+    @promotion = current_seller.promotions.build(promotion_params)
 
     respond_to do |format|
       if @promotion.save
