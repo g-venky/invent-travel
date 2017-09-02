@@ -17,6 +17,19 @@
   </thead>
 
   <tbody>
+  <% if seller_signed_in? %>
+     <% @my_queries.each do |my_query| %>
+       <tr>
+        <td style="padding: 30px;"><%= my_query.query_number %></td>
+        <td style="padding: 30px;"><%= my_query.destination %></td>
+        <td style="padding: 30px;"><%= my_query.pax %></td>
+        <td style="padding: 30px;"><%= my_query.travel_date %></td>
+        <td style="padding: 30px;"><%= my_query.duration %></td>
+        <td style="padding: 30px;"><%= my_query.tour_requirements %></td>
+        <td style="padding: 30px;"><%= my_query. quotes_received%></td>
+           <% end %>
+    <% end %>
+
     <% @my_queries.each do |my_query| %>
     <% if current_user==my_query.user %>
       <tr>

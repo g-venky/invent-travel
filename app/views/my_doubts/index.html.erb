@@ -11,6 +11,14 @@
     </tr>
   </thead>
   <tbody>
+  <% if seller_signed_in? %>
+   <% @my_doubts.each do |my_doubt| %>
+    <tr>
+        <td style="padding: 30px"><%= link_to my_doubt.destination,my_doubt %></td>
+        <td style="padding: 30px"><%= link_to my_doubt.doubt_details,my_doubt %></td>
+           <% end %>
+
+    <% end %>
     <% @my_doubts.each do |my_doubt| %>
     <% if current_user==my_doubt.user %>
       <tr>
@@ -21,6 +29,7 @@
         <td ><%= link_to 'Destroy', my_doubt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
+
     <% end %>
   </tbody>
 </table>

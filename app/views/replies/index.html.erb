@@ -7,7 +7,7 @@
     <tr>
       <th>My doubt</th>
       <th>Body</th>
-      <th>User</th>
+      <th>seller</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= reply.my_doubt_id %></td>
         <td><%= reply.body %></td>
-        <td><%= reply.user %></td>
+        <td><%= reply.seller_id %></td>
         <td><%= link_to 'Show', reply %></td>
         <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
         <td><%= link_to 'Destroy', reply, method: :delete, data: { confirm: 'Are you sure?' } %></td>

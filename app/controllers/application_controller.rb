@@ -11,5 +11,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up) do |seller_params|
     seller_params.permit({ roles: [] },:company_name, :website, :email,:password, :password_confirmation,region:[])
   end
+  
 end
 end

@@ -1,31 +1,24 @@
 Rails.application.routes.draw do
- 
-  devise_for :users, path: 'users', controllers: { sessions: "users/sessions" }  do
-     member do
-    get :promotions
-  end
-  end
 
-  devise_for :sellers, path: 'sellers', controllers: { sessions: "sellers/sessions" } do
-      resources :promotions do
-      member do
-          put "like",    to:    "promotions#upvote"
-          put "dislike", to:    "promotions#downvote"
-      end
-    end
-      resources :segments
+  resources :segments
   resources :offices
   resources :deals
   resources :brouchers
   resources :reviews
    resources :contacts
    resources :abouts
-  end
+
+  devise_for :users, path: 'users', controllers: { sessions: "users/sessions" }  
+
+  devise_for :sellers, path: 'sellers', controllers: { sessions: "sellers/sessions" } 
+ 
+ 
+
   resources :my_queries
   
   resources :stalls
   resources :companies
-  # devise_for :companies
+ 
   resources :replies
 	root to: "home#index"
   get 'home/stall'
@@ -51,12 +44,7 @@ Rails.application.routes.draw do
   	resources :my_doubts do
   		resources :replies
   	end
-       resources :segments
-  resources :offices
-  resources :deals
-  resources :brouchers
-  resources :reviews
-   resources :contacts
-   resources :about
-
+  
 end
+
+  

@@ -4,6 +4,7 @@ class StallsController < ApplicationController
   # GET /stalls
   # GET /stalls.json
   def index
+
     @stalls = Stall.all
   end
 
@@ -11,12 +12,20 @@ class StallsController < ApplicationController
   # GET /stalls/1.json
   def show
   end
+# def stall
+  #if @stall = Stall.find(params[:id])
+   # render 'stall'
+  #else
+    #render 'new'
+  #end
+#end
 
   # GET /stalls/new
   def new
-    @stall = Stall.new
-  end
 
+              @stall = current_seller.stalls.build  # render 'index'
+  
+end
   # GET /stalls/1/edit
   def edit
   end
@@ -24,12 +33,12 @@ class StallsController < ApplicationController
   # POST /stalls
   # POST /stalls.json
   def create
-    @stall = Stall.new(stall_params)
+    @stall = current_seller.stalls.build(stall_params)
 
     respond_to do |format|
       if @stall.save
         format.html { redirect_to @stall, notice: 'Stall was successfully created.' }
-        format.json { render :show, status: :created, location: @stall }
+       # format.json { render :show, status: :created, location: @stall }
       else
         format.html { render :new }
         format.json { render json: @stall.errors, status: :unprocessable_entity }
@@ -69,6 +78,6 @@ class StallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stall_params
-      params.fetch(:stall, {})
+     params.require(:stall).permit(:about ,:destinations,:contacts,:offices,segments:[])
     end
 end

@@ -1,17 +1,37 @@
- <% if seller_signed_in? -%>
- 
- 	<%= link_to ' promotion', new_promotion_path %>
- 	 
-
+<% if seller_signed_in? -%>
+ <%= link_to ' promotion', new_promotion_path %>
 <% end %> 
 
 
 <% @promotions.each do |promotion| %>
 <% if current_seller==promotion.seller %>
+<div class="link row clearfix">
+       
+       <h2 class="author"> <%= link_to promotion.seller.website ,stalls_path %><small class="author"> <%= time_ago_in_words(promotion.created_at) %>  ago</small></h2> </br>
+    <h2 style="text-align: center;">
+      <%= link_to promotion.destination, promotion %>
+     </h2>
+     
+     <h2 style="text-align: center;">
+      <%= link_to promotion.details, promotion %>
+     </h2>
+ </div>
 
-  <div class="link row clearfix">
-    	 
-       <h2 class="author"> <%= link_to promotion.seller.website ,home_online_stall_path %><small class="author"> <%= time_ago_in_words(promotion.created_at) %>  ago</small></h2> </br>
+      <div class="btn-group">
+     
+      <%= link_to like_promotion_path(promotion), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        Upvote
+        <%= promotion.get_upvotes.size %>
+      <% end %>
+
+<% end %>
+ <% end %>
+ <% @promotions.each do |promotion| %>
+<% if user_signed_in? %>
+<div class="link row clearfix">
+       
+       <h2 class="author"> <%= link_to promotion.seller.website ,promotion_path(promotion.seller) %><small class="author"> <%= time_ago_in_words(promotion.created_at) %>  ago</small></h2> </br>
     <h2 style="text-align: center;">
       <%= link_to promotion.destination, promotion %>
      </h2>
@@ -20,18 +40,14 @@
       <%= link_to promotion.details, promotion %>
      </h2>
  </div>
-<% else %>
-  <div class="link row clearfix">
-    	 
-       <h2 class="author"> <%= link_to promotion.seller.website ,home_online_stall_path %><small class="author"> <%= time_ago_in_words(promotion.created_at) %>  ago</small></h2> </br>
-    <h2 style="text-align: center;">
-      <%= link_to promotion.destination, promotion %>
-     </h2>
+
+      <div class="btn-group">
      
-     <h2 style="text-align: center;">
-      <%= link_to promotion.details, promotion %>
-     </h2>
- </div>
+      <%= link_to like_promotion_path(promotion), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        Upvote
+        <%= promotion.get_upvotes.size %>
+      <% end %>
 
 <% end %>
  <% end %>

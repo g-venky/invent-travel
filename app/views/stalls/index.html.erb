@@ -1,6 +1,50 @@
-<p id="notice"><%= notice %></p>
+        <nav class="collapse navbar-collapse navbar-ex1-collapse">
+          <% if user_signed_in? -%>
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><%= link_to 'Onlinestall', stalls_path %></li>
+              <li><%= link_to 'promotions', promotions_path %></li>
+             
+            </ul>
+          <% else -%>
+            <ul class="nav navbar-nav pull-right">
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+            </ul>
+          <% end -%>
+        </nav>
 
-<h1>Stalls</h1>
+ <% if seller_signed_in? -%>
+ <%= link_to 'put your stall', new_stall_path %>
+<% end %> 
 
-<%= link_to 'promotions', promotions_path %>
+<% @stalls.each do |stall| %>
+ <% if stall.seller==current_seller %>  
+<div class="link row clearfix">
+  <h3 style="text-align: center;">About us</h3></br>
+  <h3><%= stall.about %></h3>
+</div>
+<div class="link row clearfix">
+  <h3 style="text-align: center;">Travel Segments</h3></br>
+  <h3><%= stall.segments %></h3>
+</div><div class="link row clearfix">
+  <h3 style="text-align: center;">Deals on</h3></br>
+  <h3><%= stall.destinations %></h3>
+</div>
+<div class="link row clearfix">
+  <h3 style="text-align: center;">contact details</h3></br>
+  <h3><%= stall.contacts %></h3>
+</div>
+<div class="link row clearfix">
+  <h3 style="text-align: center;">office location</h3></br>
+  <h3><%= stall.offices %></h3>
+</div>
+<% end %>
+
+
+<% end %>
+
+
+
+
 

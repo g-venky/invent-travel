@@ -13,6 +13,7 @@ class HomeController < ApplicationController
 
 	end	
 	def online_stall
+		@promotions = Promotion.where(@seller)
 		@abouts = About.all
 		   @offices = Office.all
 

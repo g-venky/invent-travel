@@ -1,4 +1,32 @@
+<ul class="nav navbar-nav navbar-right">
+  <li ><%= link_to 'Add Your Stall', new_stall_path %></li>
+</ul>
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_stall_path(@stall) %> |
-<%= link_to 'Back', stalls_path %>
+<div class="link row clearfix">
+  <h3 style="text-align: center;">About us</h3></br>
+  <h3><%= @stall.about %></h3>
+</div>
+<div class="link row clearfix">
+  <h3 style="text-align: center;">Travel Segments</h3></br>
+  <h3><%= @stall.segments %></h3>
+</div><div class="link row clearfix">
+  <h3 style="text-align: center;">Deals on</h3></br>
+  <h3><%= @stall.destinations %></h3>
+</div>
+<div class="link row clearfix">
+  <h3 style="text-align: center;">contact details</h3></br>
+  <h3><%= @stall.contacts %></h3>
+</div>
+<div class="link row clearfix">
+  <h3 style="text-align: center;">office location</h3></br>
+  <h3><%= @stall.offices %></h3>
+</div>
+<% if @stall.seller==current_seller %>
+
+	<div class="btn-group">
+		<%= link_to 'Edit', edit_stall_path(@stall), class: "btn btn-default" %>
+		<%= link_to 'Back', stalls_path, class: "btn btn-default" %>
+		<%= link_to 'Destroy', @stall, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+	</div>
+<% end %>

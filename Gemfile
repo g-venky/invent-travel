@@ -24,6 +24,7 @@ gem 'record_tag_helper', '~> 1.0'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.10', '>= 2.10.21'
 gem "cancan"
+gem 'jquery-rails', '~> 4.2', '>= 4.2.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

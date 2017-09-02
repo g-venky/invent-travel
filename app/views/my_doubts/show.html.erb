@@ -26,6 +26,42 @@
 <% else %>
 	<%= link_to 'My Doubt', new_my_doubt_path %>
 <% end %>
+<% if seller_signed_in? %>
+  
+<table style="border: 1px solid black;"">
+  <thead>
+    <tr>
+      <th  style="padding: 30px;">Destination</th>
+      <th  style="padding: 30px;">Details</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td style="padding: 30px;"><%= @my_doubt.destination %></td>
+        <td style="padding: 30px;"><%= @my_doubt.doubt_details %></td>
+      </tr>
+    
+  </tbody>
+</table>
+<h3 class="replies_title">
+  <%= @my_doubt.replies.count %> Replies from seller
+</h3>
+
+<div id="replies">
+  <%= render :partial => @my_doubt.replies %>
+</div>
+<%= simple_form_for [@my_doubt, Reply.new]  do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Add replies", class: "btn btn-primary" %>
+<% end %>
+<% end %>
+
 
 
 

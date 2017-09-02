@@ -1,13 +1,32 @@
-<%= simple_form_for(@reply) do |f| %>
-  <%= f.error_notification %>
+<%= form_with(model: reply, local: true) do |form| %>
+  <% if reply.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reply.errors.count, "error") %> prohibited this reply from being saved:</h2>
 
-  <div class="form-inputs">
-    <%= f.input :my_doubt_id %>
-    <%= f.input :body %>
-    <%= f.association :user %>
+      <ul>
+      <% reply.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :my_doubt_id %>
+    <%= form.number_field :my_doubt_id, id: :reply_my_doubt_id %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, id: :reply_body %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seller %>
+    <%= form.text_field :seller, id: :reply_seller %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
   </div>
 <% end %>

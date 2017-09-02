@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817093655) do
-
-  create_table "abouts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "write"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "seller_id"
-    t.index ["seller_id"], name: "index_abouts_on_seller_id"
-  end
+ActiveRecord::Schema.define(version: 20170821133618) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "title"
@@ -51,22 +43,6 @@ ActiveRecord::Schema.define(version: 20170817093655) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "seller_id"
-    t.index ["seller_id"], name: "index_contacts_on_seller_id"
-  end
-
-  create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "destinations"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "seller_id"
-    t.index ["seller_id"], name: "index_deals_on_seller_id"
-  end
-
   create_table "my_doubts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "destination"
     t.text "doubt_details"
@@ -90,19 +66,11 @@ ActiveRecord::Schema.define(version: 20170817093655) do
     t.index ["user_id"], name: "index_my_queries_on_user_id"
   end
 
-  create_table "offices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "seller_id"
-    t.index ["seller_id"], name: "index_offices_on_seller_id"
-  end
-
   create_table "promotions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "destination"
+    t.text "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "details"
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
@@ -112,13 +80,13 @@ ActiveRecord::Schema.define(version: 20170817093655) do
   end
 
   create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "my_doubt_id"
     t.text "body"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "my_doubt_id"
+    t.integer "seller_id"
     t.index ["my_doubt_id"], name: "index_replies_on_my_doubt_id"
-    t.index ["user_id"], name: "index_replies_on_user_id"
+    t.index ["seller_id"], name: "index_replies_on_seller_id"
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -127,14 +95,6 @@ ActiveRecord::Schema.define(version: 20170817093655) do
     t.datetime "updated_at", null: false
     t.integer "seller_id"
     t.index ["seller_id"], name: "index_reviews_on_seller_id"
-  end
-
-  create_table "segments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "travelsegments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "seller_id"
-    t.index ["seller_id"], name: "index_segments_on_seller_id"
   end
 
   create_table "sellers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -164,8 +124,11 @@ ActiveRecord::Schema.define(version: 20170817093655) do
   end
 
   create_table "stalls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text "about"
+    t.text "destinations"
+    t.text "segments"
+    t.text "contacts"
+    t.text "offices"
     t.integer "seller_id"
     t.index ["seller_id"], name: "index_stalls_on_seller_id"
   end
@@ -220,5 +183,4 @@ ActiveRecord::Schema.define(version: 20170817093655) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
-  add_foreign_key "replies", "users"
 end

@@ -4,17 +4,22 @@ class PromotionsController < ApplicationController
   # GET /promotions
   # GET /promotions.json
   def index
-    @promotions = Promotion.all
+  
+  @promotions =Promotion.all
   end
-
   # GET /promotions/1
   # GET /promotions/1.json
   def show
+   
   end
 
   # GET /promotions/new
-  def new
-    @promotion = current_seller.promotions.build
+  def new  
+    if seller_signed_in?
+      @promotion =current_seller.promotions.build
+    else 
+      redirect_to new_seller_registration_path
+    end
   end
 
   # GET /promotions/1/edit
@@ -75,7 +80,12 @@ class PromotionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_promotion
-      @promotion = Promotion.find(params[:id])
+     
+      
+         @promotion = Promotion.find(params[:id])
+   
+  
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

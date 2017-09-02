@@ -1,4 +1,4 @@
 class Reply < ApplicationRecord
-  belongs_to :user
-  has_many   :my_doubts
+  belongs_to  :seller
+  belongs_to  :my_doubt
 end
