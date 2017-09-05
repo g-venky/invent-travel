@@ -1,17 +1,46 @@
+
+<style>
+
+table {
+    border: 1px solid #ddd; 
+    width: 125%;
+}
+ th {
+    padding: 15px;
+       text-align: left;
+       font-weight:  normal;
+        background-color: lightblue;
+        font-size: 25px;
+      
+}
+
+
+ td {
+    padding: 30px;
+    font-weight:  bold;
+     font-size: 20px;
+     border-bottom:  1px solid #ddd; 
+}
+</style>
 <ul class="nav navbar-nav navbar-right">
-  <li ><%= link_to 'Add Your Topic', new_topic_path %></li>
+  <li style="font-weight: bold;" ><%= link_to 'Add Your Topic', new_topic_path %></li>
 </ul>
 <% @topics.each do |topic| %>
-  <div class="link row clearfix">
-    <h2>
-      <%= link_to topic.discussions ,topic%><br>
-      <small class="author">Submitted <%= time_ago_in_words(topic.created_at) %> by <%= topic.user.email %></small>
-    </h2>
-    <h3>
-       <%= link_to topic.details ,topic %><br>
-       </h3>
 
-  </div>
-  
-  <% end %>
  
+ <table>
+  <tr>
+    <th><strong> <%= topic.user.email %></strong> <small style="font-size: 15px;"><%= time_ago_in_words(topic.created_at) %> ago </small></th> 
+  </tr>
+  <tr>
+    <td ><%=  topic.discussions %></td>
+  </tr>
+  <tr>
+   <td> <%= topic.details %></td>
+  </tr>
+  <td><button style="background: lightblue"><%= link_to topic.comments.count ,topic %></button><strong style="background: lightblue">Comments</strong></td>
+</table></br>
+
+
+
+<% end %>

@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = current_seller.reviews.build
+    @review = current_user.reviews.build
   end
 
   # GET /reviews/1/edit
@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = current_seller.reviews.build(review_params)
+    @review = current_user.reviews.build(review_params)
 
     respond_to do |format|
       if @review.save

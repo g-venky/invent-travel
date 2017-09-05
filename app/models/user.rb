@@ -8,7 +8,7 @@ class User < ApplicationRecord
     has_many :topics
     has_many :my_doubts
     has_many :my_queries
-   
+    has_many :reviews
    
   	
 end

@@ -1,4 +1,4 @@
-<%= form_for @stall do |f| %>
+<%= form_for @stall, html: {multipart: true} do |f| %>
   <% if @stall.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@stall.errors.count, "error") %> prohibited this stall from being saved:</h2>
@@ -9,7 +9,10 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %> <div class="form-group">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
   <div class="form-group">
     <%= f.label :About_Us %><br>
     <%= f.text_field :about, class: "form-control" %>

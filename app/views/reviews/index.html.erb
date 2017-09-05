@@ -1,6 +1,6 @@
 
 
-<% if seller_signed_in? -%>
+
 
 
 
@@ -8,13 +8,13 @@
 
   <%= link_to 'write Review', new_review_path %>
   
- <% end %>
+ 
 
 <% @reviews.each do |review| %>
   <div class="link row clearfix">
     <h2>
       <%= link_to review.rating ,review%><br>
-      <small class="author">Submitted <%= time_ago_in_words(review.created_at) %> by <%= review.seller.company_name %></small>
+      <small class="author">Submitted <%= time_ago_in_words(review.created_at) %> by <%= review.user.email %></small>
     </h2>
    
   </div>

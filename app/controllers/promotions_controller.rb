@@ -1,11 +1,11 @@
 class PromotionsController < ApplicationController
   before_action :set_promotion, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  #before_action :authenticate_user!, except: [:index]
   # GET /promotions
   # GET /promotions.json
   def index
   
-  @promotions =Promotion.all
+  @promotions =Promotion.order(created_at: :desc)
   end
   # GET /promotions/1
   # GET /promotions/1.json

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821133618) do
+ActiveRecord::Schema.define(version: 20170904143503) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "title"
@@ -76,7 +76,9 @@ ActiveRecord::Schema.define(version: 20170821133618) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.integer "seller_id"
+    t.integer "stall_id"
     t.index ["seller_id"], name: "index_promotions_on_seller_id"
+    t.index ["stall_id"], name: "index_promotions_on_stall_id"
   end
 
   create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -94,7 +96,9 @@ ActiveRecord::Schema.define(version: 20170821133618) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "seller_id"
+    t.integer "user_id"
     t.index ["seller_id"], name: "index_reviews_on_seller_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "sellers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -130,6 +134,10 @@ ActiveRecord::Schema.define(version: 20170821133618) do
     t.text "contacts"
     t.text "offices"
     t.integer "seller_id"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["seller_id"], name: "index_stalls_on_seller_id"
   end
 

@@ -1,32 +1,42 @@
+<style>
+table {
+    border: 1px solid #ddd; 
+    width: 100%;
+}
+ th {
+    padding: 15px;
+       text-align: left;
+       font-weight:  normal;
+        background-color: lightblue;
+        font-size: 25px;
+      
+}
+
+
+ td {
+    padding: 30px;
+    font-weight:  bold;
+     font-size: 20px;
+     border-bottom:  1px solid #ddd; 
+}
+</style>
+
 <p id="notice"><%= notice %></p>
 
 
-
-<div class="link row clearfix">
-  <h1 style="text-align: center;"><%= @promotion.destination %></h1>
-</div>
-
-<div class="link row clearfix">
-  <%= image_tag @promotion.image.url(:medium) %>
-</div>
-
-<div class="link row clearfix">
-  <h1 style="text-align: left;"><%= @promotion.details %></h1>
-</div>
-
-
-
-	<div class="btn-group">
-		<%= link_to 'Edit', edit_promotion_path(@promotion), class: "btn btn-default" %>
-		<%= link_to 'Back', promotions_path, class: "btn btn-default" %>
-		<%= link_to 'Destroy', @promotion, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-	</div>
-
-<div class="btn-group pull-right">
-  <%= link_to like_promotion_path(@promotion), method: :put, class: "btn btn-primary" do %>
+<table>
+  <tr>
+    <th style="text-align: center;"><%= @promotion.destination %></th> 
+  </tr>
+  <tr>
+   <td ><%= @promotion.details %></br><%= image_tag @promotion.image.url(:medium) %></td>
+  </tr>
+  <tr>
+   <td>  <%= link_to like_promotion_path(@promotion), method: :put, class: "btn btn-primary" do %>
     <span class="glyphicon glyphicon-chevron-up"></span>
     Upvote
     <%= @promotion.get_upvotes.size %>
   <% end %>
- 
-</div>
+</td>
+  </tr>
+</table></br> 

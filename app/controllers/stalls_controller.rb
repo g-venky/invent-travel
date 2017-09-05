@@ -5,12 +5,17 @@ class StallsController < ApplicationController
   # GET /stalls.json
   def index
 
-    @stalls = Stall.all
+  
   end
 
   # GET /stalls/1
   # GET /stalls/1.json
   def show
+   
+  end
+    def promotion
+    @seller = Seller.find(params[:id])
+    @promotions = @seller.promotions
   end
 # def stall
   #if @stall = Stall.find(params[:id])
@@ -23,22 +28,22 @@ class StallsController < ApplicationController
   # GET /stalls/new
   def new
 
-              @stall = current_seller.stalls.build  # render 'index'
+ @stall = current_seller.build_stall # render 'index'
   
 end
   # GET /stalls/1/edit
   def edit
   end
-
+ 
   # POST /stalls
   # POST /stalls.json
   def create
-    @stall = current_seller.stalls.build(stall_params)
+    @stall = current_seller.build_stall(stall_params)
 
     respond_to do |format|
       if @stall.save
         format.html { redirect_to @stall, notice: 'Stall was successfully created.' }
-       # format.json { render :show, status: :created, location: @stall }
+       format.json { render :show, status: :created, location: @stall }
       else
         format.html { render :new }
         format.json { render json: @stall.errors, status: :unprocessable_entity }
@@ -78,6 +83,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stall_params
-     params.require(:stall).permit(:about ,:destinations,:contacts,:offices,segments:[])
+     params.require(:stall).permit(:image,:about ,:destinations,:contacts,:offices,segments:[])
     end
 end
