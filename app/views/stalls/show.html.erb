@@ -2,7 +2,7 @@
 <header>
   <h1 style="width: 150%;"><%= image_tag @stall.image.url(:large) %></h1></br>
     <button type="button" class="btn btn-info"> About US</button>
-    <button type="button" class="btn btn-info"> <%= link_to 'promotions', promotions_path %></button>
+    <button type="button" class="btn btn-info"> <%= link_to 'promotions', custom_stall_promotions_path %></button>
     <button type="button" class="btn btn-info">Gallery</button>
     <button type="button" class="btn btn-info"><%= link_to 'Brouchers', brouchers_path %></button>
     <button type="button" class="btn btn-info"><%= link_to 'Reviews', reviews_path %></button> 
@@ -68,17 +68,18 @@ table {
   </tr>
 </table>
 
-<%= link_to 'promotions' ,promotion_path(@stall.promotions) %>
+
   
                           
             
 <p id="notice"><%= notice %></p>
 
 
-<% if @stall.seller==current_seller %>
+<% if seller_signed_in? %>
 
 	<div class="btn-group">
 		<%= link_to 'Edit', edit_stall_path(@stall), class: "btn btn-default" %>
 		<%= link_to 'Destroy', @stall, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
 	</div>
+
 <% end %>

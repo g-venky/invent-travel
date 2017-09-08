@@ -11,15 +11,21 @@ Rails.application.routes.draw do
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions" }  
 
   devise_for :sellers, path: 'sellers', controllers: { sessions: "sellers/sessions" } 
+
  
  
+  resources :replies
 
   resources :my_queries
   
-  resources :stalls
-  resources :companies
+  resources :stalls do
+    resources :promotions ,only: [:index]
+  end
+
+get 'stalls/:id/stall_promotions' => 'stalls#stall_promotions', :as => :custom_stall_promotions
+
  
-  resources :replies
+  
 	root to: "home#index"
   get 'home/stall'
   root  'home#stall'
@@ -27,6 +33,7 @@ Rails.application.routes.draw do
   root 'home#operator'
   get 'home/online_stall'
   root 'home#online_stall'
+
 	
   	resources :topics do
     	member do

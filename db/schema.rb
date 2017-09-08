@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904143503) do
+ActiveRecord::Schema.define(version: 20170907095032) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "title"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20170904143503) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.integer "seller_id"
     t.integer "stall_id"
+    t.bigint "seller_id"
     t.index ["seller_id"], name: "index_promotions_on_seller_id"
     t.index ["stall_id"], name: "index_promotions_on_stall_id"
   end
@@ -120,11 +120,9 @@ ActiveRecord::Schema.define(version: 20170904143503) do
     t.datetime "updated_at", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.integer "user_id"
     t.string "region"
     t.index ["email"], name: "index_sellers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
-    t.index ["user_id"], name: "index_sellers_on_user_id"
   end
 
   create_table "stalls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -133,11 +131,11 @@ ActiveRecord::Schema.define(version: 20170904143503) do
     t.text "segments"
     t.text "contacts"
     t.text "offices"
-    t.integer "seller_id"
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.integer "seller_id"
     t.index ["seller_id"], name: "index_stalls_on_seller_id"
   end
 
@@ -191,4 +189,5 @@ ActiveRecord::Schema.define(version: 20170904143503) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
+  add_foreign_key "promotions", "sellers"
 end

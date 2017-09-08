@@ -3,8 +3,8 @@ class Seller < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable,:validatable
+       
          has_one :stall
-         has_many :promotions, through: :stall
          has_many :brouchers
          has_many :replies
          

@@ -1,22 +1,27 @@
 class StallsController < ApplicationController
   before_action :set_stall, only: [:show, :edit, :update, :destroy]
-
+  
+ 
   # GET /stalls
   # GET /stalls.json
   def index
 
-  
+  @stall=Stall.all
   end
+   def stall_promotions
+ @stall = Stall.find(params[:id])
+ @promotions = @stall.promotions
+
+ #render plain: {posts: @posts.inspect, user: @user.inspect} 
+end
 
   # GET /stalls/1
   # GET /stalls/1.json
   def show
+    
    
   end
-    def promotion
-    @seller = Seller.find(params[:id])
-    @promotions = @seller.promotions
-  end
+
 # def stall
   #if @stall = Stall.find(params[:id])
    # render 'stall'
@@ -25,10 +30,14 @@ class StallsController < ApplicationController
   #end
 #end
 
-  # GET /stalls/new
   def new
+ if current_seller.stall 
+  redirect_to stall_path(current_seller.stall) 
+ else 
+  @stall = current_seller.build_stall
+ end
 
- @stall = current_seller.build_stall # render 'index'
+ #@stall = current_seller.build_stall # render 'index'
   
 end
   # GET /stalls/1/edit
@@ -38,6 +47,7 @@ end
   # POST /stalls
   # POST /stalls.json
   def create
+  
     @stall = current_seller.build_stall(stall_params)
 
     respond_to do |format|

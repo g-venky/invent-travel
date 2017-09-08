@@ -20,6 +20,13 @@
 							
 							<li><%= link_to 'Account', edit_user_registration_path %></li>
 							<li><%= link_to 'Become Seller', home_stall_path %></li>
+<% if seller_signed_in? -%>
+ <% if current_seller.stall %>
+  <%= link_to 'My Stall',stall_path(current_seller.stall) %>
+<% else %>
+  <%= link_to 'put your stall',new_stall_path %>
+<% end %>
+<% end %>
 							<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
 						</ul>
 					<% else -%>
@@ -32,8 +39,6 @@
       </div>
     </div>
   </header>
-
- 
 
 
 	<div id="main_content" class="container">

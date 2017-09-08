@@ -4,9 +4,13 @@ class PromotionsController < ApplicationController
   # GET /promotions
   # GET /promotions.json
   def index
-  
-  @promotions =Promotion.order(created_at: :desc)
+   if seller_signed_in?
+      @promotions=Promotion.where(stall_id:current_seller.stall.id)
+    else
+      @promotions=Promotion.order(created_at: :desc)
   end
+ 
+end
   # GET /promotions/1
   # GET /promotions/1.json
   def show
@@ -16,7 +20,9 @@ class PromotionsController < ApplicationController
   # GET /promotions/new
   def new  
     if seller_signed_in?
-      @promotion =current_seller.promotions.build
+
+        @promotion = current_seller.stall.promotions.build
+    
     else 
       redirect_to new_seller_registration_path
     end
@@ -29,7 +35,8 @@ class PromotionsController < ApplicationController
   # POST /promotions
   # POST /promotions.json
   def create
-    @promotion = current_seller.promotions.build(promotion_params)
+     
+    @promotion = current_seller.stall.promotions.build(promotion_params)
 
     respond_to do |format|
       if @promotion.save

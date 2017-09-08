@@ -1,6 +1,2 @@
 
-<% if current_seller.stall %>
-  <%= link_to 'My Stall',stall_path(current_seller.stall) %>
-<% else %>
-  <%= link_to 'put your stall',new_stall_path %>
-<% end %>
+<%= link_to 'stall',new_stall_path %>
