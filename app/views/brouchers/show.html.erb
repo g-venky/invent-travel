@@ -11,7 +11,7 @@
   <h1 style="text-align: left;"><%= @broucher.title %></h1>
 </div>
 
-<% if @broucher.seller==current_seller %>
+<% if seller_signed_in? %>
 
 	<div class="btn-group">
 		<%= link_to 'Edit', edit_broucher_path(@broucher), class: "btn btn-default" %>

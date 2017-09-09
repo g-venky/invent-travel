@@ -4,8 +4,8 @@
     <button type="button" class="btn btn-info"> About US</button>
     <button type="button" class="btn btn-info"> <%= link_to 'promotions', custom_stall_promotions_path %></button>
     <button type="button" class="btn btn-info">Gallery</button>
-    <button type="button" class="btn btn-info"><%= link_to 'Brouchers', brouchers_path %></button>
-    <button type="button" class="btn btn-info"><%= link_to 'Reviews', reviews_path %></button> 
+    <button type="button" class="btn btn-info"><%= link_to 'Brouchers', custom_stall_brouchers_path %></button>
+    <button type="button" class="btn btn-info"><%= link_to 'Reviews', custom_stall_reviews_path %></button> 
      <button type="button" class="btn btn-default"><%= image_tag @stall.image.url(:large) %></button> 
 </header> 
 <style>

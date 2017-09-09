@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   resources :segments
   resources :offices
   resources :deals
@@ -15,16 +16,22 @@ Rails.application.routes.draw do
  
  
   resources :replies
+  resources :quotes
 
-  resources :my_queries
-  
+  resources :my_queries do
+    resources :quotes
+  end
+    resources :profiles
   resources :stalls do
     resources :promotions ,only: [:index]
+    resources :brouchers
+    resources :reviews
   end
 
 get 'stalls/:id/stall_promotions' => 'stalls#stall_promotions', :as => :custom_stall_promotions
+get 'stalls/:id/stall_brouchers' => 'stalls#stall_brouchers', :as => :custom_stall_brouchers
+get 'stalls/:id/stall_reviews' => 'stalls#stall_reviews', :as => :custom_stall_reviews
 
- 
   
 	root to: "home#index"
   get 'home/stall'

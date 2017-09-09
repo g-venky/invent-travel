@@ -1,40 +1,117 @@
+
+<style>
+
+
+table {
+    border: 1px solid #ddd; 
+    width: 125%;
+}
+ th {
+    padding: 30px;
+       text-align: left;
+       font-weight:  bold;
+                font-size: 25px;
+                border-left:  1px solid #ddd; 
+      
+}
+
+
+ td {
+    padding: 30px;
+    font-weight:  normal;
+     font-size: 20px;
+     border-bottom:  1px solid #ddd; 
+          border-top:  1px solid #ddd; 
+           border-left:  1px solid #ddd; 
+}
+</style>
 <p id="notice"><%= notice %></p>
 <% if current_user==@my_query.user %>
-<table style="border: 1px solid black;"">
-  <thead>
+<table >
+  
     <tr>
-      <th  style="padding: 30px;">Query Number</th>
-      <th  style="padding: 30px;">Destination</th>
-      <th  style="padding: 30px;">No.of Pax</th>
-      <th  style="padding: 30px;">travel date</th>
-      <th  style="padding: 30px;">Duration</th>
-      <th  style="padding: 30px;">Tour Requirements</th>
-      <th  style="padding: 30px;">Quotes Received</th>
-      <th colspan="3"></th>
+      <th  >Query Number</th>
+      <th >Destination</th>
+      <th  >No.of Pax</th>
+      <th  >travel date</th>
+      <th  >Duration</th>
+      <th  >Tour Requirements</th>
+      <th  >Quotes recevied</th>
     </tr>
-  </thead>
-
-  <tbody>
+ 
+ 
       <tr>
-        <td style="padding: 30px;"><%= @my_query.query_number %></td>
-        <td style="padding: 30px;"><%= @my_query.destination %></td>
-        <td style="padding: 30px;"><%= @my_query.pax %></td>
-        <td style="padding: 30px;"><%= @my_query.travel_date %></td>
-        <td style="padding: 30px;"><%= @my_query.duration %></td>
-        <td style="padding: 30px;"><%= @my_query.tour_requirements %></td>
-        <td style="padding: 30px;"><%= @my_query. quotes_received%></td>
+        <td ><%= @my_query.query_number %></td>
+        <td ><%= @my_query.destination %></td>
+        <td ><%= @my_query.pax %></td>
+        <td ><%= @my_query.travel_date %></td>
+        <td ><%= @my_query.duration %></td>
+        <td ><%= @my_query.tour_requirements %></td>
+         <td><%=  @my_query.quotes.count %></td>
+        
      
-        <td style="padding: 30px;"><%= link_to 'Edit', edit_my_query_path(@my_query) %></td>
-        <td style="padding: 30px">	<%= link_to 'Back', my_queries_path %></td>
+        
+     
       
        
       </tr>
     
-  </tbody>
+  
 </table>
-<% else %>
-	<%= link_to 'My Query', new_my_query_path %>
+<div id="replies">
+  <%= render :partial => @my_query.quotes %>
+</div>
+
+<% end %>
+<% if seller_signed_in? %>
+ <table>
+     <tr>
+      <th  >Query Number</th>
+      <th >Destination</th>
+      <th  >No.of Pax</th>
+      <th  >travel date</th>
+      <th  >Duration</th>
+      <th  >Tour Requirements</th>
+       <th  >Quotes recevied</th>
+    
+    </tr>
+
+      <tr>
+        <td ><%= @my_query.query_number %></td>
+        <td ><%= @my_query.destination %></td>
+        <td ><%= @my_query.pax %></td>
+        <td ><%= @my_query.travel_date %></td>
+        <td ><%= @my_query.duration %></td>
+        <td ><%= @my_query.tour_requirements %></td>
+          <td><%= link_to @my_query.quotes.count ,@my_query %></td>
+        
+     
+        
+     
+      
+       
+      </tr>
+ 
+
+</table></br>
+ 
+  
+<div id="quotes">
+  <%= render :partial => @my_query.quotes %>
+</div>
+<%= simple_form_for [@my_query, Quote.new]  do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Add quotes", class: "btn btn-primary" %>
 <% end %>
 
+
+<% end %>
+
+
+     <h4> <%= link_to 'Back', my_queries_path %></h4>
+ 
 
 

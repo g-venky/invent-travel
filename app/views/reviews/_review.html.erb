@@ -1,0 +1,43 @@
+
+
+<style>
+
+
+table {
+     
+    width: 125%;
+}
+ th {
+    padding: 10px;
+       text-align: left;
+       font-weight: normal;
+        font-size: 25px;
+        border-top: 1px solid #ddd;
+      
+}
+
+
+ td {
+    padding: 20px;
+    font-weight:  normal;
+     font-size: 20px;
+   
+     text-align: left; 
+}
+</style>
+<%= div_for(review) do %>
+	<table>
+  <tr>
+    <th><%= review.user.First_Name %> :</th> 
+ 
+  
+    <th  style="font-weight: bold;"> <%= review.rating %>
+
+  </tr>
+  <tr>
+  <td></td>
+   <td ><%= review.body %></td>
+  </tr>
+
+</table></br> 
+<% end %>

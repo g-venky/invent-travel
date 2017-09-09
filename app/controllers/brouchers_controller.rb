@@ -14,7 +14,7 @@ class BrouchersController < ApplicationController
 
   # GET /brouchers/new
   def new
-    @broucher = current_seller.brouchers.build
+    @broucher = current_seller.stall.brouchers.build
   end
 
   # GET /brouchers/1/edit
@@ -24,7 +24,7 @@ class BrouchersController < ApplicationController
   # POST /brouchers
   # POST /brouchers.json
   def create
-    @broucher = current_seller.brouchers.build(broucher_params)
+    @broucher = current_seller.stall.brouchers.build(broucher_params)
 
     respond_to do |format|
       if @broucher.save

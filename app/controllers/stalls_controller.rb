@@ -14,7 +14,18 @@ class StallsController < ApplicationController
 
  #render plain: {posts: @posts.inspect, user: @user.inspect} 
 end
+  def stall_brouchers
+ @stall = Stall.find(params[:id])
+ @brouchers = @stall.brouchers
 
+ #render plain: {posts: @posts.inspect, user: @user.inspect} 
+end
+  def stall_reviews
+ @stall = Stall.find(params[:id])
+ @reviews = @stall.reviews
+
+ #render plain: {posts: @posts.inspect, user: @user.inspect} 
+end
   # GET /stalls/1
   # GET /stalls/1.json
   def show

@@ -1,57 +1,86 @@
+<h3 style="text-align: right;"><%= link_to 'Add My Query', new_my_query_path %></h3>
+<style>
+
+
+table {
+    border: 1px solid #ddd; 
+    width: 125%;
+}
+ th {
+    padding: 30px;
+       text-align: left;
+       font-weight:  bold;
+                font-size: 25px;
+                border-left:  1px solid #ddd; 
+      
+}
+
+
+ td {
+    padding: 30px;
+    font-weight:  normal;
+     font-size: 20px;
+     border-bottom:  1px solid #ddd; 
+          border-top:  1px solid #ddd; 
+          border-right: 1px solid #ddd; 
+         
+}
+</style>
 <p id="notice"><%= notice %></p>
 
-<h1> Queries</h1>
+<h1>My Queries</h1>
+    <table>
+  <tr>
+       <th  >Query Number</th>
+      <th >Destination</th>
+      <th  >No.of Pax</th>
+      <th >travel date</th>
+      <th >Duration</th>
+      <th >Tour Requirements</th>
+      <th >Quotes Received</th>
+  </tr>
+  
 
-<table style="border: 1px solid black;"">
-  <thead>
-    <tr>
-      <th  style="padding: 30px;">Query Number</th>
-      <th  style="padding: 30px;">Destination</th>
-      <th  style="padding: 30px;">No.of Pax</th>
-      <th  style="padding: 30px;">travel date</th>
-      <th  style="padding: 30px;">Duration</th>
-      <th  style="padding: 30px;">Tour Requirements</th>
-      <th  style="padding: 30px;">Quotes Received</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
   <% if seller_signed_in? %>
      <% @my_queries.each do |my_query| %>
-       <tr>
-        <td style="padding: 30px;"><%= my_query.query_number %></td>
-        <td style="padding: 30px;"><%= my_query.destination %></td>
-        <td style="padding: 30px;"><%= my_query.pax %></td>
-        <td style="padding: 30px;"><%= my_query.travel_date %></td>
-        <td style="padding: 30px;"><%= my_query.duration %></td>
-        <td style="padding: 30px;"><%= my_query.tour_requirements %></td>
-        <td style="padding: 30px;"><%= my_query. quotes_received%></td>
+     
+
+  <tr>
+        <td ><%= my_query.query_number %></td>
+        <td ><%= my_query.destination %></td>
+        <td><%= my_query.pax %></td>
+        <td ><%= my_query.travel_date %></td>
+        <td><%= my_query.duration %></td>
+        <td ><%= my_query.tour_requirements %></td>
+       <td><%= link_to my_query.quotes.count ,my_query %></td>
+
+  </tr>
+
+
            <% end %>
     <% end %>
 
+
     <% @my_queries.each do |my_query| %>
     <% if current_user==my_query.user %>
-      <tr>
-        <td style="padding: 30px;"><%= my_query.query_number %></td>
-        <td style="padding: 30px;"><%= my_query.destination %></td>
-        <td style="padding: 30px;"><%= my_query.pax %></td>
-        <td style="padding: 30px;"><%= my_query.travel_date %></td>
-        <td style="padding: 30px;"><%= my_query.duration %></td>
-        <td style="padding: 30px;"><%= my_query.tour_requirements %></td>
-        <td style="padding: 30px;"><%= my_query. quotes_received%></td>
-      
-        <td style="padding: 30px;"><%= link_to 'Show', my_query %></td>
-        <td style="padding: 30px;"><%= link_to 'Edit', edit_my_query_path(my_query) %></td>
-        <td style="padding: 30px;"><%= link_to 'Destroy', my_query, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+       <tr>
+          <td ><%= my_query.query_number %></td>
+        <td ><%= my_query.destination %></td>
+        <td><%= my_query.pax %></td>
+        <td ><%= my_query.travel_date %></td>
+        <td><%= my_query.duration %></td>
+        <td ><%= my_query.tour_requirements %></td>
+        <td><%= link_to my_query.quotes.count ,my_query %></td>
+
+  </tr>
+ 
      
-      </tr>
       <% end %>
     <% end %>
-  </tbody>
+ 
 </table>
 
  
 <br>
 
-<%= link_to ' My Query', new_my_query_path %>

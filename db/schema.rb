@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907095032) do
+ActiveRecord::Schema.define(version: 20170909153841) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "title"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20170907095032) do
     t.string "document_content_type"
     t.integer "document_file_size"
     t.datetime "document_updated_at"
-    t.integer "seller_id"
-    t.index ["seller_id"], name: "index_brouchers_on_seller_id"
+    t.integer "stall_id"
+    t.index ["stall_id"], name: "index_brouchers_on_stall_id"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -66,6 +66,29 @@ ActiveRecord::Schema.define(version: 20170907095032) do
     t.index ["user_id"], name: "index_my_queries_on_user_id"
   end
 
+  create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "organization"
+    t.integer "employees"
+    t.string "website"
+    t.string "designation"
+    t.string "email"
+    t.string "headoffice"
+    t.string "branches"
+    t.text "aboutus"
+    t.string "firstname"
+    t.string "lastname"
+    t.integer "seller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "deals"
+    t.text "segments"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["seller_id"], name: "index_profiles_on_seller_id"
+  end
+
   create_table "promotions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "destination"
     t.text "details"
@@ -81,12 +104,22 @@ ActiveRecord::Schema.define(version: 20170907095032) do
     t.index ["stall_id"], name: "index_promotions_on_stall_id"
   end
 
+  create_table "quotes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "my_query_id"
+    t.text "body"
+    t.bigint "seller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["my_query_id"], name: "index_quotes_on_my_query_id"
+    t.index ["seller_id"], name: "index_quotes_on_seller_id"
+  end
+
   create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "my_doubt_id"
-    t.integer "seller_id"
+    t.bigint "seller_id"
     t.index ["my_doubt_id"], name: "index_replies_on_my_doubt_id"
     t.index ["seller_id"], name: "index_replies_on_seller_id"
   end
@@ -95,9 +128,10 @@ ActiveRecord::Schema.define(version: 20170907095032) do
     t.text "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "seller_id"
-    t.integer "user_id"
-    t.index ["seller_id"], name: "index_reviews_on_seller_id"
+    t.integer "stall_id"
+    t.bigint "user_id"
+    t.string "body"
+    t.index ["stall_id"], name: "index_reviews_on_stall_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -190,4 +224,7 @@ ActiveRecord::Schema.define(version: 20170907095032) do
   end
 
   add_foreign_key "promotions", "sellers"
+  add_foreign_key "quotes", "sellers"
+  add_foreign_key "replies", "sellers"
+  add_foreign_key "reviews", "users"
 end

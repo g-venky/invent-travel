@@ -1,0 +1,115 @@
+<h4 style="text-align:right; "><%= link_to 'Edit Profile', edit_profile_path(@profile) %></h4> 
+<style>
+ h3 {    
+    text-align: left;
+    font-size: 25px;
+    background-color: lightblue;
+   
+}
+
+table {
+    border: 1px solid #ddd; 
+    width: 125%;
+}
+ th {
+    padding: 15px;
+       text-align: left;
+       font-weight:  normal;
+       
+        font-size: 25px;
+      
+}
+
+
+ td {
+    padding: 30px;
+    font-weight:  normal;
+     font-size: 20px;
+     
+}
+</style>
+<p id="notice"><%= notice %></p>
+<table>
+<p>
+<tr>
+  <th><strong>Organization :     </strong></th>
+              <td><%= @profile.organization %></td>
+  <th> <%= image_tag @profile.image.url(:medium) %> </th>
+</tr>
+</p>
+
+<p>
+<tr>
+  <th><strong>Total Employees : </strong></th>
+  <td><%= @profile.employees %></td>
+  <th><%= @profile.firstname %>   <%= @profile.lastname %></th>
+  </tr>
+</p>
+
+<p>
+<tr>
+ <th> <strong>Website :</strong></th>
+  <td><%= @profile.website %></td>
+  </tr>
+</p>
+
+<p>
+<tr>
+  <th><strong>Designation :</strong></th>
+  <td><%= @profile.designation %></td>
+</tr>
+</p>
+
+<p>
+<tr>
+  <th><strong>Email id :</strong></th>
+  <td><%= @profile.email %></td>
+  </tr>
+</p>
+<p>
+<tr>
+  <th><strong>Travel segments :</strong></th>
+  <td><%= @profile.segments %></td>
+  </tr>
+</p>
+<p>
+<tr>
+ <th> <strong>Deals on :</strong></th>
+  <td><%= @profile.deals %></td>
+  </tr>
+</p>
+
+<p>
+<tr>
+ <th> <strong>Headoffice :</strong></th>
+ <td> <%= @profile.headoffice %></td>
+  </tr>
+</p>
+<p>
+<tr>
+ <th> <strong>Branches :</strong></th>
+  <td><%= @profile.branches %></td>
+  </tr>
+</p>
+
+<p>
+<tr>
+ <th ><strong>Aboutus :</strong></th>
+  <td><%= @profile.aboutus %></td>
+  </tr>
+</p>
+
+
+
+
+
+</table>
+
+            
+            <% if current_seller.last_sign_in_at and time_ago_in_words(current_seller.last_sign_in_at).to_i < 5 %>
+              <img title="Last seen <%= time_ago_in_words(current_seller.last_sign_in_at) + ' ago' %>" src="/icons/status-active.png"  class="img-rounded" alt="seller Image" width="20" height="20"> 
+            <% elsif current_seller.last_sign_in_at and time_ago_in_words(current_seller.last_sign_in_at).to_i >= 5 && time_ago_in_words(current_seller.last_sign_in_at).to_i < 15 %>
+              <img title="Last seen <%= time_ago_in_words(current_seller.last_sign_in_at) + ' ago' %>" src="/icons/status-away.png"  class="img-rounded" alt="seller Image" width="20" height="20"> 
+            <% else %>
+              <img title="Last seen <%= (current_seller.last_sign_in_at ? time_ago_in_words(current_seller.last_sign_in_at) : '7 days') + ' ago' %>" src="/icons/status-offline.png"  class="img-rounded" alt="seller Image" width="20" height="20"> 
+            <% end %>

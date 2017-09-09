@@ -5,9 +5,8 @@ class Seller < ApplicationRecord
          :recoverable, :rememberable, :trackable, :confirmable,:validatable
        
          has_one :stall
-         has_many :brouchers
-         has_many :replies
-         
+      
+         has_one :profile
 
 
 

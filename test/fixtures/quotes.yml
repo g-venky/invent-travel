@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  my_query_id: 1
+  body: MyText
+  seller: one
+
+two:
+  my_query_id: 1
+  body: MyText
+  seller: two

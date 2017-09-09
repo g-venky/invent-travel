@@ -1,0 +1,119 @@
+<%= form_for @profile, html: {multipart: true} do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+     <div class="form-group">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+            <div class="form-group">
+    
+            <%= f.label :organization %><br>
+            <%= f.text_field :organization, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :employees %><br>
+            <%= f.text_field :employees, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :website %><br>
+            <%= f.text_field :website, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :Designation %><br>
+            <%= f.text_field :designation, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :Email_id %><br>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+           <div class="form-group">
+            <%= f.label :deals %><br>
+            <%= f.text_field :deals, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :headoffice %><br>
+            <%= f.text_field :headoffice, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :About_us %><br>
+            <%= f.text_field :aboutus, class: "form-control" %>
+          </div>
+        <div class="form-group">
+            <%= f.label :firstname %><br>
+            <%= f.text_field :firstname, class: "form-control" %>
+          </div>
+        <div class="form-group">
+            <%= f.label :lastname %><br>
+            <%= f.text_field :lastname, class: "form-control" %>
+          </div>
+       
+
+       
+
+  
+      <h3>Travel Segments</h3>
+  <div class="form-group">
+    <%= label_tag 'segments_FIT','FIT'  %>
+    <%= check_box_tag 'profile[segments][]','FIT',checked1('FIT'),id: 'segments_FIT' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'segments_Religious_culture_&_heritage_tours','Religious_culture_&_heritage_tours'  %>
+    <%= check_box_tag 'profile[segments][]','Religious_culture_&_heritage_tours',checked1('Religious_culture_&_heritage_tours'),id: 'segments_Religious_culture_&_heritage_tours' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'segments_Arilines','Arilines'  %>
+    <%= check_box_tag 'profile[segments][]','Arilines',checked1('Arilines'),id: 'segments_Arilines' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'segments_Health_&_Wellness','Health_&_Wellness'  %>
+    <%= check_box_tag 'profile[segments][]','Health_&_Wellness',checked1('Health_&_Wellness'),id: 'segments_Health_&_Wellness' %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'segments_cruises','cruises'  %>
+    <%= check_box_tag 'profile[segments][]','cruises',checked1('cruises'),id: 'segments_cruises' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'segments_Railway','Railway'  %>
+    <%= check_box_tag 'profile[segments][]','Railway',checked1('Railway'),id: 'segments_Railway' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'segments_Adventures_&_sports_tourism','Adventures_&_sports_tourism'  %>
+    <%= check_box_tag 'profile[segments][]','Adventures_&_sports_tourism',checked1('Adventures_&_sports_tourism'),id: 'segments_Adventures_&_sports_tourism' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'segments_Git','Git'  %>
+    <%= check_box_tag 'profile[segments][]','Git',checked1('Git'),id: 'segments_Git' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag 'segments_Accommodation','Accommodation'  %>
+    <%= check_box_tag 'profile[segments][]','Accommodation',checked1('Accommodation'),id: 'segments_Accommodation' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'segments_Wedding_&_Honeymoon','Wedding_&_Honeymoon'  %>
+    <%= check_box_tag 'profile[segments][]','Wedding_&_Honeymoon',checked1('Wedding_&_Honeymoon'),id: 'segments_Wedding_&_Honeymoon' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'segments_Ticketing','Ticketing'  %>
+    <%= check_box_tag 'profile[segments][]','Ticketing',checked1('Ticketing'),id: 'segments_Ticketing' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag 'segments_coach','coach'  %>
+    <%= check_box_tag 'profile[segments][]','coach',checked1('coach'),id: 'segments_coach' %>
+    </div>
+    
+  
+  <div class="form-group">
+    <%= f.submit "submit", class: "btn btn-lg btn-primary" %>
+  </div>
+  
+<% end %>

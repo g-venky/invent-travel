@@ -1,54 +1,76 @@
+
+
+<style>
+
+
+table {
+    border: 1px solid #ddd; 
+    width: 125%;
+}
+ th {
+    padding: 15px;
+       text-align: left;
+       font-weight:  bold;
+                font-size: 25px;
+                border-left:  1px solid #ddd; 
+      
+}
+
+
+ td {
+    padding: 30px;
+    font-weight:  normal;
+     font-size: 20px;
+     border-bottom:  1px solid #ddd; 
+          border-top:  1px solid #ddd; 
+           border-left:  1px solid #ddd; 
+}
+</style>
 <p id="notice"><%= notice %></p>
 <% if current_user==@my_doubt.user %>
-<table style="border: 1px solid black;"">
-  <thead>
-    <tr>
-      <th  style="padding: 30px;">Destination</th>
-      <th  style="padding: 30px;">Details</th>
-
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td style="padding: 30px;"><%= @my_doubt.destination %></td>
-        <td style="padding: 30px;"><%= @my_doubt.doubt_details %></td>
-     
-        <td style="padding: 30px;"><%= link_to 'Edit', edit_my_doubt_path(@my_doubt) %></td>
-        <td style="padding: 30px">	<%= link_to 'Back', my_doubts_path %></td>
-      
-       
-      </tr>
+<table>
+  <tr>
+    <th>Destination</th>
+    <th>Doubt details</th>
     
-  </tbody>
+    <th></th>
+  </tr>
+
+  <tr>
+    <td><%= @my_doubt.destination %></td>
+    <td><%= @my_doubt.doubt_details %></td>
+  
+  
+  
+    <td style="padding: 30px"><%= link_to 'Edit', edit_my_doubt_path(@my_doubt) %>
+        <%= link_to '//{ Destroy }', @my_doubt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
 </table>
-<% else %>
-	<%= link_to 'My Doubt', new_my_doubt_path %>
+<div id="replies">
+  <%= render :partial => @my_doubt.replies %>
+</div>
+
 <% end %>
 <% if seller_signed_in? %>
+ <table>
+  <tr>
+    <th>Destination</th>
+    <th>Doubt details</th>
+    <th>Reply from Seller</th>
+  </tr>
+
+  <tr>
+    <td><%= @my_doubt.destination %></td>
+    <td><%= @my_doubt.doubt_details %></td>
+ 
+
+  </tr>
+
+ 
+
+</table></br>
+ 
   
-<table style="border: 1px solid black;"">
-  <thead>
-    <tr>
-      <th  style="padding: 30px;">Destination</th>
-      <th  style="padding: 30px;">Details</th>
-
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td style="padding: 30px;"><%= @my_doubt.destination %></td>
-        <td style="padding: 30px;"><%= @my_doubt.doubt_details %></td>
-      </tr>
-    
-  </tbody>
-</table>
-<h3 class="replies_title">
-  <%= @my_doubt.replies.count %> Replies from seller
-</h3>
 
 <div id="replies">
   <%= render :partial => @my_doubt.replies %>
@@ -60,8 +82,10 @@
   <br>
   <%= f.submit "Add replies", class: "btn btn-primary" %>
 <% end %>
-<% end %>
 
 
+ <% end %></br>
+
+     <h4> <%= link_to 'Back', my_doubts_path %></h4>
 
 

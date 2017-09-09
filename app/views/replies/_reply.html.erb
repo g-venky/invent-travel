@@ -1,9 +1,10 @@
 <%= div_for(reply) do %>
-	<div class="replies_wrapper clearfix">
-		<div class="pull-left">
-			<p class="lead"><%= reply.body %></p>
-			<p><small>Submitted <strong><%= time_ago_in_words(reply.created_at) %> ago</strong> by <%= reply.seller.company_name %></small></p>
-		</div>
+	
+    <h4 ><strong style="color: lightblue;"><%= link_to reply.seller.company_name,stall_path(reply.seller.stall) %></strong>:             <%= reply.body %></h4>
+ 
+  
 
-	</div>
+
+  
+
 <% end %>

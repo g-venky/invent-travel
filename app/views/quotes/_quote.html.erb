@@ -1,0 +1,10 @@
+<%= div_for(quote) do %>
+	
+    <h4><strong style="color: lightblue;"><%= link_to quote.seller.company_name,stall_path(quote.seller.stall) %></strong>:             <%= quote.body %></h4>
+ 
+  
+
+
+  
+
+<% end %>

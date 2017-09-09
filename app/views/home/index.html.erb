@@ -2,6 +2,24 @@
 <% if user_signed_in? %>
 <button type="button" class="btn btn-info"> <%= link_to 'promotions', promotions_path %></button>
 <button type="button" class="btn btn-info"> <%= link_to 'Discussions',topics_path %></button>
- <li><%= link_to "My Doubt", my_doubts_path  %></li>
-<li><%= link_to "My Queries", my_queries_path  %></li>
+ <h3><%= link_to "My Doubt", my_doubts_path  %>
+/<%= link_to "My Queries", my_queries_path  %></h3>
 <% end %>
+<% if seller_signed_in? -%>
+            <div>
+          <ul class="nav" id="side-menu">
+            
+               <% if current_seller.stall.present? %>
+                    <h3><%= link_to 'My Stall',stall_path(current_seller.stall) %></h3>
+                <% else %>
+                   <h3> <%= link_to 'put your stall',new_stall_path %></h3>
+                <% end %></br>
+                <% if current_seller.profile %>
+             <h3> <%= link_to "My Profile", profile_path(current_seller.profile) %></h3>
+               <% else %>
+                   <h3> <%= link_to 'My Profile',new_profile_path %></h3>
+                <% end %>
+           
+            <% end %>
+            </ul>
+            </div>
