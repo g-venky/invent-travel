@@ -29,7 +29,7 @@ end
   # GET /stalls/1
   # GET /stalls/1.json
   def show
-    
+ 
    
   end
 
