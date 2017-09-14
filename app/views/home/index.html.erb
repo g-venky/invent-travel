@@ -4,22 +4,31 @@
 <button type="button" class="btn btn-info"> <%= link_to 'Discussions',topics_path %></button>
  <h3><%= link_to "My Doubt", my_doubts_path  %>
 /<%= link_to "My Queries", my_queries_path  %></h3>
-<% end %>
+
+
 <% if seller_signed_in? -%>
-            <div>
-          <ul class="nav" id="side-menu">
+<div>
+  <ul class="nav" id="side-menu">
             
-               <% if current_seller.stall.present? %>
+      <% if current_seller.stall.present? %>
                     <h3><%= link_to 'My Stall',stall_path(current_seller.stall) %></h3>
-                <% else %>
-                   <h3> <%= link_to 'put your stall',new_stall_path %></h3>
-                <% end %></br>
-                <% if current_seller.profile %>
+      <% else %>
+                   <h3> <%= link_to 'put your stall',home_operator_path %></h3>
+      <% end %></br>
+      <% if current_seller.profile %>
              <h3> <%= link_to "My Profile", profile_path(current_seller.profile) %></h3>
-               <% else %>
+      <% else %>
                    <h3> <%= link_to 'My Profile',new_profile_path %></h3>
-                <% end %>
+      <% end %>
            
-            <% end %>
-            </ul>
-            </div>
+      <% if current_seller.stall.contacts.present? %>
+             <h3> <%= link_to "My contacts", contacts_path(current_seller.stall.contacts) %></h3>
+      <% else %>
+                   <h3> <%= link_to 'My contacts',new_contact_path %></h3>
+      <% end %>
+<% else %>
+<h3><%= link_to "My contact list", contacts_path  %></h3>
+<% end %>
+  </ul>
+</div>
+<% end %>

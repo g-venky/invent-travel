@@ -1,18 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Number:</strong>
+  <%= @contact.number %>
+</p>
 
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
 
+<p>
+  <strong>Department:</strong>
+  <%= @contact.department %>
+</p>
 
-
-<div class="link row clearfix">
-  <h1 style="text-align: left;"><%= @contact.address %></h1>
-</div>
-
-<% if @contact.seller==current_seller %>
-
-	<div class="btn-group">
-		<%= link_to 'Edit', edit_contact_path(@contact), class: "btn btn-default" %>
-		<%= link_to 'Back', contacts_path, class: "btn btn-default" %>
-		<%= link_to 'Destroy', @contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-	</div>
-<% end %>
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

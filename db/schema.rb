@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909153841) do
+ActiveRecord::Schema.define(version: 20170913140751) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "title"
@@ -41,6 +41,18 @@ ActiveRecord::Schema.define(version: 20170909153841) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "number"
+    t.string "email"
+    t.string "department"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "stall_id"
+    t.bigint "seller_id"
+    t.index ["seller_id"], name: "index_contacts_on_seller_id"
+    t.index ["stall_id"], name: "index_contacts_on_stall_id"
   end
 
   create_table "my_doubts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -86,6 +98,7 @@ ActiveRecord::Schema.define(version: 20170909153841) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.string "department"
     t.index ["seller_id"], name: "index_profiles_on_seller_id"
   end
 
@@ -163,7 +176,6 @@ ActiveRecord::Schema.define(version: 20170909153841) do
     t.text "about"
     t.text "destinations"
     t.text "segments"
-    t.text "contacts"
     t.text "offices"
     t.string "image_file_name"
     t.string "image_content_type"
@@ -223,6 +235,7 @@ ActiveRecord::Schema.define(version: 20170909153841) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
+  add_foreign_key "contacts", "sellers"
   add_foreign_key "promotions", "sellers"
   add_foreign_key "quotes", "sellers"
   add_foreign_key "replies", "sellers"

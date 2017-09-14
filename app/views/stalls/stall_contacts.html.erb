@@ -28,7 +28,7 @@ table {
 <p id="notice"><%= notice %></p>
 
 <h1>Contacts</h1>
- <% if seller_signed_in? %>
+
 <table>
 
     <tr>
@@ -47,59 +47,25 @@ table {
     </tr>
  
 
+  
     <% @contacts.each do |contact| %>
-
- 
       <tr>
-      <td><%= current_seller.profile.organization %></td>
+      <td><%= contact.stall.seller.profile.organization %></td>
         <td><%= contact.number %></td>
         <td><%= contact.email %></td>
         <td><%= contact.department %></td>
-        <td><%= current_seller.profile.designation %></td>
-          <td><%= current_seller.profile.segments %></td>
-          <td><%= current_seller.profile.deals %></td>
-           <td><%= current_seller.profile.headoffice %></td>
-            <td><%= current_seller.profile.firstname %></td>
+        <td><%= contact.stall.seller.profile.designation %></td>
+          <td><%= contact.stall.seller.profile.segments %></td>
+          <td><%= contact.stall.seller.profile.deals %></td>
+           <td><%= contact.stall.seller. profile.headoffice %></td>
+            <td><%=  contact.stall.seller.profile.firstname %></td>
        
         <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
   
-    
-  
-    
+      </tr>
     <% end %>
+  
 </table>
-<% else %>
-<table>
 
-    <tr>
-
-
-      <th>Contact Number</th>
-      <th>Email id</th>
-      
-
-      <th colspan="3"></th>
-    </tr>
- 
-
-    <% @contacts.each do |contact| %>
-
- 
-      <tr>
-     
-        <td><%= contact.number %></td>
-        <td><%= contact.email %></td>
-     
-       
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-  
-    
-  
-    
-    <% end %>
-</table>
-  
-<% end %>
 <br>
-
-
+<%= link_to 'Add Contact', new_contact_path %>

@@ -26,6 +26,12 @@ end
 
  #render plain: {posts: @posts.inspect, user: @user.inspect} 
 end
+  def stall_contacts
+ @stall = Stall.find(params[:id])
+ @contacts = @stall.contacts
+
+ #render plain: {posts: @posts.inspect, user: @user.inspect} 
+end
   # GET /stalls/1
   # GET /stalls/1.json
   def show

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   devise_for :sellers, path: 'sellers', controllers: { sessions: "sellers/sessions" } 
 
  
- 
+ resources :contacts
   resources :replies
   resources :quotes
 
@@ -26,11 +26,14 @@ Rails.application.routes.draw do
     resources :promotions ,only: [:index]
     resources :brouchers
     resources :reviews
+    resources :contacts
   end
-
+#post '/contact' => 'profiles#contact', as: :contact
+#get '/contacts' => 'profiles#contacts', as: :contacts
 get 'stalls/:id/stall_promotions' => 'stalls#stall_promotions', :as => :custom_stall_promotions
 get 'stalls/:id/stall_brouchers' => 'stalls#stall_brouchers', :as => :custom_stall_brouchers
 get 'stalls/:id/stall_reviews' => 'stalls#stall_reviews', :as => :custom_stall_reviews
+get 'stalls/:id/stall_contacts' => 'stalls#stall_contacts', :as => :custom_stall_contacts
 
   
 	root to: "home#index"

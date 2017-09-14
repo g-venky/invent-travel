@@ -1,4 +1,5 @@
-<%= form_for @contact, html: {multipart: true} do |f| %>
+
+<%= form_for @contact   do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
@@ -11,12 +12,19 @@
     </div>
   <% end %>
 
-
   <div class="form-group">
-    <%= f.label :Contact_details  %><br>
-    <%= f.text_field :address, class: "form-control" %>
+    <%= f.label :Contact_Number %><br>
+    <%= f.text_field :number, class: "form-control" %>
   </div>
  
+  <div class="form-group">
+    <%= f.label :Department %><br>
+    <%= f.text_field :department, class: "form-control" %>
+  </div>
+    <div class="form-group">
+    <%= f.label :Email_id %><br>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
   <br>
   <div class="form-group">
     <%= f.submit "create contact", class: "btn btn-lg btn-primary" %>

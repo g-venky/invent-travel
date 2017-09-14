@@ -60,17 +60,54 @@ table {
   <tr>
     <th>Office Location</th>
     <th>Contact Details</th>
+    
   </tr>
   <tr>
     <td><%= @stall.offices %></td>
-    <td><%= @stall.contacts %></td>
+ 
+    <td>
     
-   
+  <% if seller_signed_in? %> 
+    <% if @stall.seller.profile.present? %>
+      <ul>
+         <li style="font-size: 20px;"><%= @stall.seller.profile.firstname %></li>
+         <li><%= @stall.seller.profile.designation %></li>
+         <li> <%= @stall.seller.profile.email %></li>
+         <li> <%= @stall.seller.profile.department %></li>
+      </ul>
+    <% else %>
+      <%= link_to 'fill your profile', new_profile_path %>
+    <% end %>
+  <% else %>
+    <% if user_signed_in? %> 
+      <% if @stall.seller.profile.present? %>
+      <ul>
+        <li style="font-size: 20px;"><%= @stall.seller.profile.firstname %></li>
+        <li><%= @stall.seller.profile.designation %></li>
+        <li> <%= @stall.seller.profile.email %></li>
+        <li> <%= @stall.seller.profile.department %></li>
+      </ul>
+      <% end %> 
+    <% end %>
+  <% end %>
+
+    
+    <% if @stall.seller = current_seller %>
+      <li> <button type="button" class="btn btn-info"><%= link_to '+ Add', custom_stall_contacts_path %></button> </li>
+    <% end %>
+    
+
+
+
+
+
+
+          </td>
   </tr>
+     
 </table>
 
-
-  
+    
                           
             
 <p id="notice"><%= notice %></p>

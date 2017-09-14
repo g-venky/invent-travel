@@ -38,7 +38,8 @@ table {
   <tr>
    <td> <%= topic.details %></td>
   </tr>
-  <td><button style="background: lightblue"><%= link_to topic.comments.count ,topic %></button><strong style="background: lightblue">Comments</strong></td>
+  <td><button style="background: lightblue"><%= topic.comments.count %><%= link_to 'comments' ,topic %></button><strong style="background: lightblue"></strong></td>
+  
 </table></br>
 
 
