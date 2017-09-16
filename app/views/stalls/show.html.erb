@@ -76,8 +76,8 @@ table {
          <li> <%= @stall.seller.profile.department %></li>
       </ul>
     <% else %>
-      <%= link_to 'fill your profile', new_profile_path %>
-    <% end %>
+      <button type="button" class="btn btn-info"><%= link_to 'Fill Your Profile', new_profile_path %></button>
+    <% end %></br>
   <% else %>
     <% if user_signed_in? %> 
       <% if @stall.seller.profile.present? %>
@@ -91,18 +91,12 @@ table {
     <% end %>
   <% end %>
 
-    
+    </br>
     <% if @stall.seller = current_seller %>
-      <li> <button type="button" class="btn btn-info"><%= link_to '+ Add', custom_stall_contacts_path %></button> </li>
+       <button type="button" class="btn btn-info"><%= link_to '+ Add', custom_stall_contacts_path %></button>
     <% end %>
     
-
-
-
-
-
-
-          </td>
+  </td>
   </tr>
      
 </table>

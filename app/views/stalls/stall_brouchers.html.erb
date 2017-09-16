@@ -1,3 +1,10 @@
+<% if seller_signed_in? -%>
+
+<ul class="nav navbar-nav navbar-left">
+ 
+ <li> <%= link_to ' broucher', new_broucher_path %></li></ul>
+<% end %>
+
 <% @brouchers.each do |broucher| %>
 
 
@@ -9,14 +16,15 @@
      </h2>
      
      <h2 style="text-align: center;">
-      <%= link_to broucher.title, broucher %>
+      <%=  broucher.title %>
      </h2>
  </div>
 
  <% end %>
  <% if seller_signed_in? -%>
  
-  <%= link_to ' broucher', new_broucher_path %>
    
-
+<ul class="nav navbar-nav navbar-left">
+  <li ><%= link_to 'Back', stall_path(@stall) %></li>
+</ul>
 <% end %> 
