@@ -4,7 +4,8 @@
 
 
 <div class="link row clearfix">
-  <%= image_tag @broucher.document.url(:medium) %>
+  <%= link_to "Download", @broucher.document_url %>
+ 
 </div>
 
 <div class="link row clearfix">
@@ -13,7 +14,9 @@
 
 <% if seller_signed_in? %>
 
-
+	<div class="btn-group">
+		<%= link_to 'Edit', edit_broucher_path(@broucher), class: "btn btn-default" %>
+		<%= link_to 'Back', brouchers_path, class: "btn btn-default" %>
 		<%= link_to 'Destroy', @broucher, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-
+	</div>
 <% end %>

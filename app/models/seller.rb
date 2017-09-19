@@ -6,7 +6,7 @@ class Seller < ApplicationRecord
        
          has_one :stall
       
-         has_one :profile
+         
         
 
 

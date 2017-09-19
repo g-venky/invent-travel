@@ -14,10 +14,10 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    if current_seller.profile 
-  redirect_to profile_path(current_seller.profile) 
+    if current_user.profile 
+  redirect_to profile_path(current_user.profile) 
  else 
-    @profile = current_seller.build_profile
+    @profile = current_user.build_profile
   end
 end
   # GET /profiles/1/edit
@@ -27,7 +27,7 @@ end
   # POST /profiles
   # POST /profiles.json
   def create
-    @profile = current_seller.build_profile(profile_params)
+    @profile = current_user.build_profile(profile_params)
 
     respond_to do |format|
       if @profile.save
@@ -72,6 +72,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:image,:deals,:organization, :employees, :website, :designation, :email, :headoffice, :branches, :aboutus, :firstname, :lastname, :seller_id,segments:[])
+      params.require(:profile).permit(:image,:deals,:organization, :employees, :website, :designation, :email, :headoffice, :branches, :aboutus, :firstname, :lastname, :user_id,segments:[])
     end
 end

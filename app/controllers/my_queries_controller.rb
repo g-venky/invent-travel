@@ -69,6 +69,6 @@ class MyQueriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def my_query_params
-        params.require(:my_query).permit( :query_number,:destination,:pax,:travel_date,:duration,:tour_requirements,:quotes_received )
+        params.require(:my_query).permit( :query_number,:destination,:pax,:child,:querytype,:travel_date,:duration,:tour_requirements,:quotes_received )
     end
 end

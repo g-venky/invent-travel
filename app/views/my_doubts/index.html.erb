@@ -65,9 +65,7 @@ table {
     <td><%= my_doubt.doubt_details %></td>
     <td><%= link_to my_doubt.replies.count ,my_doubt %></td>
    
-  
-    <td style="padding: 30px"><%= link_to 'Edit', edit_my_doubt_path(my_doubt) %>
-        <%= link_to '//{ Destroy }', my_doubt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ 
 </tr>
 
 <% end %>

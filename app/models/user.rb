@@ -9,6 +9,8 @@ class User < ApplicationRecord
     has_many :my_doubts
     has_many :my_queries
     has_many :reviews
-   
+    has_one :profile
+    has_many :contacts
+ 
   	
 end

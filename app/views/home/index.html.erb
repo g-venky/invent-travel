@@ -1,9 +1,15 @@
 <% if user_signed_in? %>
 <button type="button" class="btn btn-info"> <%= link_to 'promotions', promotions_path %></button>
-<button type="button" class="btn btn-info"> <%= link_to 'Discussions',topics_path %></button></br>
+<button type="button" class="btn btn-info"> <%= link_to 'Discussions',topics_path %></button></br></br>
+<button type="button" class="btn btn"> <%= link_to 'clarify Destination Doubts',new_topic_path %></button>
+<button type="button" class="btn btn"> <%= link_to 'Get Qutation for My Query',new_my_query_path %></button></br>
  <ul class="nav navbar-nav navbar-left">
  <li><%= link_to "My Doubt", my_doubts_path  %>/<%= link_to "My Queries", my_queries_path  %></li></br>
-
+      <% if current_user.profile %>
+             <li> <%= link_to "My Profile", profile_path(current_user.profile) %></li>
+      <% else %>
+                   <li> <%= link_to 'My Profile',new_profile_path %></li>
+      <% end %></br>
 
 <% if seller_signed_in? -%>
 
@@ -14,18 +20,8 @@
       <% else %>
                     <li><%= link_to 'put your stall',home_operator_path %></li>
       <% end %></br>
-      <% if current_seller.profile %>
-             <li> <%= link_to "My Profile", profile_path(current_seller.profile) %></li>
-      <% else %>
-                   <li> <%= link_to 'My Profile',new_profile_path %></li>
-      <% end %></br>
-            <% if current_seller.stall.present? %>
-      <% if current_seller.stall.contacts.present? %>
-             <li> <%= link_to "My contacts", contacts_path(current_seller.stall.contacts) %></li>
-      <% else %>
-                   <li> <%= link_to 'My contacts',new_contact_path %></li>
-      <% end %>
-       <% end %>
+
+            
 <% else %>
 <li><%= link_to "My contact list", contacts_path  %></li>
 <% end %>

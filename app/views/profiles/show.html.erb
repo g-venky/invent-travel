@@ -111,11 +111,3 @@ table {
 
 </table>
 
-            
-            <% if current_seller.last_sign_in_at and time_ago_in_words(current_seller.last_sign_in_at).to_i < 5 %>
-              <img title="Last seen <%= time_ago_in_words(current_seller.last_sign_in_at) + ' ago' %>" src="/icons/status-active.png"  class="img-rounded" alt="seller Image" width="20" height="20"> 
-            <% elsif current_seller.last_sign_in_at and time_ago_in_words(current_seller.last_sign_in_at).to_i >= 5 && time_ago_in_words(current_seller.last_sign_in_at).to_i < 15 %>
-              <img title="Last seen <%= time_ago_in_words(current_seller.last_sign_in_at) + ' ago' %>" src="/icons/status-away.png"  class="img-rounded" alt="seller Image" width="20" height="20"> 
-            <% else %>
-              <img title="Last seen <%= (current_seller.last_sign_in_at ? time_ago_in_words(current_seller.last_sign_in_at) : '7 days') + ' ago' %>" src="/icons/status-offline.png"  class="img-rounded" alt="seller Image" width="20" height="20"> 
-            <% end %>

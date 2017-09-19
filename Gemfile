@@ -25,6 +25,8 @@ gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.10', '>= 2.10.21'
 gem "cancan"
 gem 'jquery-rails', '~> 4.2', '>= 4.2.2'
+gem 'carrierwave' 
+gem 'jquery-ui-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

@@ -5,18 +5,15 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
 
- if seller_signed_in?
+ 
 
-   if current_seller.profile.present?
+   if current_user.profile.present?
     @contacts=Contact.all
   else
     redirect_to new_profile_path
    end
-else
-    if current_user.present?
-    @contacts=Contact.all
-    end
-  end
+
+ 
 end
   # GET /contacts/1
   # GET /contacts/1.json
@@ -26,7 +23,7 @@ end
   # GET /contacts/new
   def new
    
-    @contact = current_seller.stall.contacts.build
+    @contact = current_user.contacts.build
 
   end
 
@@ -37,7 +34,7 @@ end
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = current_seller.stall.contacts.build(contact_params)
+    @contact = current_user.contacts.build(contact_params)
 
     respond_to do |format|
       if @contact.save

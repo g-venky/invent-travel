@@ -30,7 +30,7 @@ table {
  
  <table>
   <tr>
-    <th><strong> <%= topic.user.email %></strong> <small style="font-size: 15px;"><%= time_ago_in_words(topic.created_at) %> ago </small></th> 
+    <th><strong> <%= topic.user.profile.firstname %> (<%= (topic.user.profile.designation) %>)</strong> <small style="font-size: 15px;"><%= time_ago_in_words(topic.created_at) %> ago </small></th> 
   </tr>
   <tr>
     <td ><%=  topic.discussions %></td>

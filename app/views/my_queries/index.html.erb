@@ -10,7 +10,7 @@ table {
     padding: 30px;
        text-align: left;
        font-weight:  bold;
-                font-size: 25px;
+                font-size: 15px;
                 border-left:  1px solid #ddd; 
       
 }
@@ -48,7 +48,7 @@ table {
   <tr>
         <td ><%= my_query.query_number %></td>
         <td ><%= my_query.destination %></td>
-        <td><%= my_query.pax %></td>
+        <td><%= my_query.pax %>adults, <%= my_query.child %>children</td>
         <td ><%= my_query.travel_date %></td>
         <td><%= my_query.duration %></td>
         <td ><%= my_query.tour_requirements %></td>
@@ -67,7 +67,7 @@ table {
        <tr>
           <td ><%= my_query.query_number %></td>
         <td ><%= my_query.destination %></td>
-        <td><%= my_query.pax %></td>
+           <td><%= my_query.pax %> adults, <%= my_query.child %> children</td>
         <td ><%= my_query.travel_date %></td>
         <td><%= my_query.duration %></td>
         <td ><%= my_query.tour_requirements %></td>
