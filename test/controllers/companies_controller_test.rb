@@ -17,7 +17,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create company" do
     assert_difference('Company.count') do
-      post companies_url, params: { company: { company_name: @company.company_name, website: @company.website } }
+      post companies_url, params: { company: { companyname: @company.companyname, email: @company.email, region: @company.region, website: @company.website } }
     end
 
     assert_redirected_to company_url(Company.last)
@@ -34,7 +34,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update company" do
-    patch company_url(@company), params: { company: { company_name: @company.company_name, website: @company.website } }
+    patch company_url(@company), params: { company: { companyname: @company.companyname, email: @company.email, region: @company.region, website: @company.website } }
     assert_redirected_to company_url(@company)
   end
 

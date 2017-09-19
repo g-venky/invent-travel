@@ -4,7 +4,7 @@ class Seller < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable,:validatable
        
-         has_one :stall
+        # has_one :stall
       
          
         

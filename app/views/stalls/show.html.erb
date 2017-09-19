@@ -52,7 +52,7 @@ table {
 
   <tr>
     <td><%= @stall.segments %></td>
-    <td><%= @stall.destinations %></td>
+    <td><%= @stall.destination %></td>
    
   </tr>
 
@@ -69,9 +69,7 @@ table {
     
 
     </br>
-    <% if @stall.seller = current_seller %>
-       <button type="button" class="btn btn-info"><%= link_to '+ Add', custom_stall_contacts_path %></button>
-    <% end %>
+  
     
   </td>
   </tr>
@@ -84,7 +82,7 @@ table {
 <p id="notice"><%= notice %></p>
 
 
-<% if seller_signed_in? %>
+<% if current_user.company.stall.present? %>
 
 	<div class="btn-group">
 		<%= link_to 'Edit', edit_stall_path(@stall), class: "btn btn-default" %>

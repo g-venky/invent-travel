@@ -1,10 +1,11 @@
-<% if seller_signed_in? -%>
-	<%= link_to 'tour operator', stalls_path %>
-
+<% if current_user.company.present? %>
+	<% if current_user.company.stall.present?-%>
+		<%= link_to 'tour_operator', stall_path(current_user.company.stall) %>
+	<% else %>
+ 		<%= link_to 'tour_operator', new_stall_path %>
+	<% end %>
 <% else %>
- 	<%= link_to 'tour operator', new_seller_registration_path %>
+		<%= link_to 'tour operator', new_company_path %>
+
 <% end %>
-
-
-
 

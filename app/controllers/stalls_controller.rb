@@ -49,10 +49,10 @@ end
 #end
 
   def new
- if current_seller.stall 
-  redirect_to stall_path(current_seller.stall) 
+ if current_user.company.stall 
+  redirect_to stall_path(current_user.company.stall) 
  else 
-  @stall = current_seller.build_stall
+  @stall = current_user.company.build_stall
  end
 
  #@stall = current_seller.build_stall # render 'index'
@@ -66,7 +66,7 @@ end
   # POST /stalls.json
   def create
   
-    @stall = current_seller.build_stall(stall_params)
+    @stall = current_user.company.build_stall(stall_params)
 
     respond_to do |format|
       if @stall.save
@@ -111,6 +111,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stall_params
-     params.require(:stall).permit(:image,:about ,:destinations,:offices,segments:[])
+     params.require(:stall).permit(:image,:about ,:destination,:offices,segments:[])
     end
 end

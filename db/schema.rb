@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917134154) do
+ActiveRecord::Schema.define(version: 20170919100511) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20170917134154) do
     t.datetime "updated_at", null: false
     t.index ["topic_id"], name: "index_comments_on_topic_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "companyname"
+    t.string "website"
+    t.text "email"
+    t.text "region"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
   create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -164,16 +175,16 @@ ActiveRecord::Schema.define(version: 20170917134154) do
 
   create_table "stalls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "about"
-    t.text "destinations"
     t.text "segments"
+    t.text "destination"
     t.text "offices"
+    t.integer "company_id"
+    t.bigint "user_id"
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.integer "seller_id"
-    t.bigint "user_id"
-    t.index ["seller_id"], name: "index_stalls_on_seller_id"
+    t.index ["company_id"], name: "index_stalls_on_company_id"
     t.index ["user_id"], name: "index_stalls_on_user_id"
   end
 

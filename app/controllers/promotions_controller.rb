@@ -19,12 +19,14 @@ end
 
   # GET /promotions/new
   def new  
-    if seller_signed_in?
-
-        @promotion = current_seller.stall.promotions.build
-    
+    if current_user.company.present?
+      if current_user.company.stall.present?
+        @promotion = current_user.company.stall.promotions.build
+      else 
+        redirect_to new_stall_path
+      end
     else 
-      redirect_to new_seller_registration_path
+      redirect_to new_company_path
     end
   end
 
@@ -36,7 +38,7 @@ end
   # POST /promotions.json
   def create
      
-    @promotion = current_seller.stall.promotions.build(promotion_params)
+    @promotion = current_user.company.stall.promotions.build(promotion_params)
 
     respond_to do |format|
       if @promotion.save

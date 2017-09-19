@@ -11,21 +11,20 @@
                    <li> <%= link_to 'My Profile',new_profile_path %></li>
       <% end %></br>
 
-<% if seller_signed_in? -%>
 
-            
-      <% if current_seller.stall.present? %>
+
+    <% if current_user.company.present? %>     
+      <% if current_user.company.stall.present? %>
                   
-                   <li> <%= link_to 'My Stall',stall_path(current_seller.stall) %></li>
+                   <li> <%= link_to 'My Stall',stall_path(current_user.company.stall) %></li>
       <% else %>
                     <li><%= link_to 'put your stall',home_operator_path %></li>
       <% end %></br>
 
-            
-<% else %>
+     <% end %>       
+
 <li><%= link_to "My contact list", contacts_path  %></li>
 <% end %>
  
 
-<% end %>
-</ul>
+
