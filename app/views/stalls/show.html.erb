@@ -1,5 +1,6 @@
 
 <header>
+   <button type="button" class="btn btn-info"> <%= link_to 'Queries', my_queries_path %></button>
   <h1 style="width: 150%;"><%= image_tag @stall.image.url(:large) %></h1></br>
     <button type="button" class="btn btn-info"> About US</button>
     <button type="button" class="btn btn-info"> <%= link_to 'promotions', custom_stall_promotions_path %></button>
@@ -66,11 +67,16 @@ table {
     <td><%= @stall.offices %></td>
  
     <td>
-    
+    <% if current_user.company.present? %>
+<% if current_user.company.stall.present? %>
+      <h3 style="text-align: right;"><%= link_to '+add', contacts_path  %></h3>
+      
+<% end %>
+<% end %>
+         <%= @stall.company.user.profile.firstname %> <%= @stall.company.user.profile.lastname %></br>
+        <%= @stall.company.user.profile.designation %></br>
+         <%= @stall.company.user.profile.email %>
 
-    </br>
-  
-    
   </td>
   </tr>
      
@@ -81,7 +87,7 @@ table {
             
 <p id="notice"><%= notice %></p>
 
-
+<% if current_user.company.present? %>
 <% if current_user.company.stall.present? %>
 
 	<div class="btn-group">
@@ -89,4 +95,5 @@ table {
 		<%= link_to 'Destroy', @stall, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
 	</div>
 
+<% end %>
 <% end %>

@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
  
 
    if current_user.profile.present?
-    @contacts=Contact.all
+    @contacts=current_user.contacts
   else
     redirect_to new_profile_path
    end

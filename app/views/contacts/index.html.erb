@@ -35,12 +35,14 @@ table {
     <th>Name</th>
      
       <th>Email id</th>
-      <th>Department</th>
       <th>Designation</th>
+        <th>Department</th>
       <th>Travel segments</th>
       <th>Deals on</th>
       <th>Head Office Location</th>
       <th>Contact Name</th>
+       <th>Contact Number</th>
+       
 
       <th colspan="3"></th>
     </tr>
@@ -50,16 +52,18 @@ table {
 
  
       <tr>
-      <td><%= current_user.profile.organization %></td>
+      <td><%= contact.user.profile.organization %></td>
       
-        <td><%= current_user.profile.email %></td>
-        <td><%= current_user.profile.department %></td>
+        <td><%= contact.user.profile.email %></td>
+       
         <td><%= current_user.profile.designation %></td>
+        <td><%= contact.department %></td>
           <td><%= current_user.profile.segments %></td>
           <td><%= current_user.profile.deals %></td>
            <td><%= current_user.profile.headoffice %></td>
             <td><%= current_user.profile.firstname %></td>
-       
+             <td><%= contact.number %></td>
+             
         <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
   
     
@@ -71,5 +75,5 @@ table {
   
 
 <br>
-
+<%= link_to ' Add contact details ', new_contact_path %>
 

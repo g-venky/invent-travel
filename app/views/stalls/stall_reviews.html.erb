@@ -1,4 +1,4 @@
-<% unless seller_signed_in? %>
+
 <%= simple_form_for [@stall, Review.new]  do |f| %>
 <h3 style="color: lightblue;">Write Review</h3>
   <div class="form-group">
@@ -22,7 +22,7 @@
 <ul class="nav navbar-nav navbar-left">
   <li ><%= link_to 'Back', stall_path(@stall) %></li>
 </ul>
-<% end %>
+
 
 <div id="reviews">
   <%= render :partial => @stall.reviews %>

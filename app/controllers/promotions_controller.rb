@@ -4,11 +4,9 @@ class PromotionsController < ApplicationController
   # GET /promotions
   # GET /promotions.json
   def index
-   if seller_signed_in?
-      @promotions=Promotion.where(stall_id:current_seller.stall.id)
-    else
+
       @promotions=Promotion.order(created_at: :desc)
-  end
+
  
 end
   # GET /promotions/1
