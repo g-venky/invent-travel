@@ -1,7 +1,12 @@
 
- <% if seller_signed_in? -%>
- 
+ <% if user_signed_in? -%>
+ <% if current_user.company.present? %>
+<% if current_user.company.stall.present? -%>
+
   <%= link_to ' Add Your Broucher', new_broucher_path %>
+<% end %> 
+<% end %> 
+ 
    
 
 <% end %> </br>

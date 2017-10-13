@@ -1,10 +1,32 @@
+
+
+       
+          <% if user_signed_in? -%>
+            <ul class="nav navbar-nav navbar-right">
+
+    <% if current_user.company.present? %>     
+      <% if current_user.company.stall.present? %>
+                  
+                   <li> <%= link_to current_user.company.companyname,stall_path(current_user.company.stall) %></li>
+      <% else %>
+                    <li><%= link_to 'put your stall',home_operator_path %></li>
+      <% end %></br>
+
+     <% end %> 
+           <% end %>  
+
+          </ul>
+      
+
+
+
 <% if user_signed_in? %>
 <button type="button" class="btn btn-info"> <%= link_to 'promotions', promotions_path %></button>
 <button type="button" class="btn btn-info"> <%= link_to 'Discussions',topics_path %></button></br></br>
 <button type="button" class="btn btn"> <%= link_to 'clarify Destination Doubts',new_topic_path %></button>
 <button type="button" class="btn btn"> <%= link_to 'Get Qutation for My Query',new_my_query_path %></button></br>
  <ul class="nav navbar-nav navbar-left">
- <li><%= link_to "My Doubt", my_doubts_path  %>/<%= link_to "My Queries", my_queries_path  %></li></br>
+ <li><%= link_to "My Doubt", my_doubts_path  %><%= link_to "My Queries", my_queries_path  %></li></br>
       <% if current_user.profile %>
              <li> <%= link_to "My Profile", profile_path(current_user.profile) %></li>
       <% else %>
@@ -13,15 +35,7 @@
 
 
 
-    <% if current_user.company.present? %>     
-      <% if current_user.company.stall.present? %>
-                  
-                   <li> <%= link_to 'My Stall',stall_path(current_user.company.stall) %></li>
-      <% else %>
-                    <li><%= link_to 'put your stall',home_operator_path %></li>
-      <% end %></br>
-
-     <% end %>       
+    
 
 <li><%= link_to "My contact list", contacts_path  %></li>
 <% end %>

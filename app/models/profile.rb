@@ -5,4 +5,14 @@ class Profile < ApplicationRecord
 		before_save do
 		self.segments.gsub!(/[\[\]\"]/,"") if attribute_present?("segments") 
 	end
+		 validates :organization, presence: true
+	  validates :designation, presence: true
+	   validates :segments, presence: true
+	    validates :branches, presence: true
+	    	 validates :website, presence: true
+	  validates :employees, presence: true
+	   validates :firstname, presence: true
+	    validates :lastname, presence: true
+	    	    	 validates :aboutus, presence: true
+	
 end

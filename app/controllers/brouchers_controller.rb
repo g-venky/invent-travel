@@ -14,8 +14,16 @@ class BrouchersController < ApplicationController
 
   # GET /brouchers/new
   def new
-    @broucher = current_seller.stall.brouchers.build
+      if current_user.company.present?
+      if current_user.company.stall.present?
+    @broucher = current_user.company.stall.brouchers.build
+      else 
+        redirect_to new_stall_path
+      end
+    else 
+      redirect_to new_company_path
   end
+end
 
   # GET /brouchers/1/edit
   def edit
@@ -24,7 +32,7 @@ class BrouchersController < ApplicationController
   # POST /brouchers
   # POST /brouchers.json
   def create
-    @broucher = current_seller.stall.brouchers.build(broucher_params)
+    @broucher = current_user.company.stall.brouchers.build(broucher_params)
 
     respond_to do |format|
       if @broucher.save

@@ -1,6 +1,8 @@
 
 <header>
+ <button type="button" class="btn btn-info"> <%=  'Online Stall'%></button>
    <button type="button" class="btn btn-info"> <%= link_to 'Queries', my_queries_path %></button>
+      <button type="button" class="btn btn-info"> <%= link_to 'Doubts', my_doubts_path %></button>
   <h1 style="width: 150%;"><%= image_tag @stall.image.url(:large) %></h1></br>
     <button type="button" class="btn btn-info"> About US</button>
     <button type="button" class="btn btn-info"> <%= link_to 'promotions', custom_stall_promotions_path %></button>
@@ -70,7 +72,7 @@ table {
     <% if current_user.company.present? %>
 <% if current_user.company.stall.present? %>
       <h3 style="text-align: right;"><%= link_to '+add', contacts_path  %></h3>
-      
+
 <% end %>
 <% end %>
          <%= @stall.company.user.profile.firstname %> <%= @stall.company.user.profile.lastname %></br>
