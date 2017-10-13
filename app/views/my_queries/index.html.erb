@@ -41,24 +41,6 @@ table {
   </tr>
   
 
-  <% if seller_signed_in? %>
-     <% @my_queries.each do |my_query| %>
-     
-
-  <tr>
-        <td ><%= my_query.query_number %></td>
-        <td ><%= my_query.destination %></td>
-        <td><%= my_query.pax %>adults, <%= my_query.child %>children</td>
-        <td ><%= my_query.travel_date %></td>
-        <td><%= my_query.duration %></td>
-        <td ><%= my_query.tour_requirements %></td>
-       <td><%= link_to my_query.quotes.count ,my_query %></td>
-
-  </tr>
-
-
-           <% end %>
-    <% end %>
 
 
     <% @my_queries.each do |my_query| %>

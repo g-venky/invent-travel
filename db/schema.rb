@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919100511) do
+ActiveRecord::Schema.define(version: 20171013153954) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -119,23 +119,17 @@ ActiveRecord::Schema.define(version: 20170919100511) do
   end
 
   create_table "quotes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "my_query_id"
     t.text "body"
-    t.bigint "seller_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["my_query_id"], name: "index_quotes_on_my_query_id"
-    t.index ["seller_id"], name: "index_quotes_on_seller_id"
+    t.integer "my_query_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "my_doubt_id"
-    t.bigint "seller_id"
-    t.index ["my_doubt_id"], name: "index_replies_on_my_doubt_id"
-    t.index ["seller_id"], name: "index_replies_on_seller_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -240,8 +234,8 @@ ActiveRecord::Schema.define(version: 20170919100511) do
 
   add_foreign_key "contacts", "sellers"
   add_foreign_key "promotions", "sellers"
-  add_foreign_key "quotes", "sellers"
-  add_foreign_key "replies", "sellers"
+  add_foreign_key "quotes", "users"
+  add_foreign_key "replies", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "stalls", "users"
 end

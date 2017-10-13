@@ -5,7 +5,7 @@ class RepliesController < ApplicationController
   def create
     @my_doubt = MyDoubt.find(params[:my_doubt_id])
     @reply = @my_doubt.replies.new(reply_params)
-    @reply.seller = current_seller
+    @reply.user = current_user
 
     respond_to do |format|
       if @reply.save
@@ -37,6 +37,6 @@ class RepliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reply_params
-      params.require(:reply).permit(:my_doubt_id, :body, :seller)
+      params.require(:reply).permit(:my_doubt_id, :body, :user)
     end
 end

@@ -63,7 +63,8 @@ table {
 </div>
 
 <% end %>
-<% if seller_signed_in? %>
+<% if current_user.company.present? %>
+<% if current_user.company.stall.present? -%>
  <table>
      <tr>
       <th  >Query Number</th>
@@ -107,7 +108,7 @@ table {
   <%= f.submit "Add quotes", class: "btn btn-primary" %>
 <% end %>
 
-
+<% end %>
 <% end %>
 
 

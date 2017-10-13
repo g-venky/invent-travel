@@ -1,6 +1,6 @@
 <%= div_for(reply) do %>
 	
-    <h4 ><strong style="color: lightblue;"><%= link_to reply.seller.company_name,stall_path(reply.seller.stall) %></strong>:             <%= reply.body %></h4>
+    <h4 ><strong style="color: lightblue;"><%= link_to reply.user.company.companyname,stall_path(reply.user.company.stall) %></strong>:             <%= reply.body %></h4>
  
   
 

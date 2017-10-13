@@ -5,7 +5,7 @@ class QuotesController < ApplicationController
   def create
          @my_query = MyQuery.find(params[:my_query_id])
     @quote = @my_query.quotes.new(quote_params)
-    @quote.seller = current_seller
+    @quote.user = current_user
    
 
     respond_to do |format|
@@ -40,6 +40,6 @@ class QuotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_params
-      params.require(:quote).permit(:my_query_id, :body, :seller_id)
+      params.require(:quote).permit(:my_query_id, :body, :user)
     end
 end

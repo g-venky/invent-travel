@@ -50,7 +50,8 @@ table {
 </div>
 
 <% end %>
-<% if seller_signed_in? %>
+<% if current_user.company.present? %>
+<% if current_user.company.stall.present? -%>
  <table>
   <tr>
     <th>Destination</th>
@@ -80,6 +81,7 @@ table {
   </div>
   <br>
   <%= f.submit "Add replies", class: "btn btn-primary" %>
+<% end %>
 <% end %>
 
 
