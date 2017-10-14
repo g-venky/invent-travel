@@ -33,6 +33,12 @@ end
 
  #render plain: {posts: @posts.inspect, user: @user.inspect} 
 end
+   def stall_doubts
+ @stall = Stall.find(params[:id])
+ @my_doubts = @stall.company.user.my_doubts
+
+ #render plain: {posts: @posts.inspect, user: @user.inspect} 
+end
   # GET /stalls/1
   # GET /stalls/1.json
   def show

@@ -38,7 +38,8 @@ table {
   </tr>
 
 
-  <% if seller_signed_in? %>
+<% if current_user.company.present? %>
+<% if current_user.company.stall.present? -%>
    <% @my_doubts.each do |my_doubt| %>
 
   <tr>
@@ -53,6 +54,7 @@ table {
 
   <% end %>
   <% end %>
+  <% else %>
 
 
 
@@ -68,6 +70,7 @@ table {
  
 </tr>
 
+<% end %>
 <% end %>
 <% end %>
 </table>

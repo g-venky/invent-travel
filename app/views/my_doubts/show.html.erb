@@ -45,11 +45,12 @@ table {
  
 </tr>
 </table>
+
 <div id="replies">
   <%= render :partial => @my_doubt.replies %>
 </div>
 
-<% end %>
+<% else %>
 <% if current_user.company.present? %>
 <% if current_user.company.stall.present? -%>
  <table>
@@ -84,9 +85,10 @@ table {
 <% end %>
 <% end %>
 
-
+<% end %>
  <% end %></br>
 
 
 
 
+<%= link_to 'back' ,my_doubts_path %>
