@@ -1,15 +1,49 @@
 
 <header>
+    <% if current_user.company.present? %>
+<% if current_user.company.stall.present? %>
+<% if  @stall.company.user == current_user %>
  <button type="button" class="btn btn-info"> <%=  'Online Stall'%></button>
    <button type="button" class="btn btn-info"> <%= link_to 'Queries', my_queries_path %></button>
       <button type="button" class="btn btn-info"> <%= link_to 'Doubts', my_doubts_path %></button>
+        <button type="button" class="btn btn-info"> <%= link_to 'Recent Registred Buyers', stalls_path %></button>
+           <% end %>
+           <% end %>
+<% end %> 
   <h1 style="width: 150%;"><%= image_tag @stall.image.url(:large) %></h1></br>
     <button type="button" class="btn btn-info"> About US</button>
     <button type="button" class="btn btn-info"> <%= link_to 'promotions', custom_stall_promotions_path %></button>
     <button type="button" class="btn btn-info">Gallery</button>
     <button type="button" class="btn btn-info"><%= link_to 'Brouchers', custom_stall_brouchers_path %></button>
     <button type="button" class="btn btn-info"><%= link_to 'Reviews', custom_stall_reviews_path %></button> 
-     <button type="button" class="btn btn-default"><%= image_tag @stall.image.url(:large) %></button> 
+     <button type="button" class="btn btn-default"><%= image_tag @stall.image.url(:large) %></button>
+      
+      <div class="row">
+  <div class="col-md-9">
+    <ul id="conversations-list">
+      <% @conversations.each do |conversation| %>
+        <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">chat</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          
+            <li><%= link_to @stall.company.user.email, conversations_path(user_id: @users), remote: true, method: :post %></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </header> 
 <style>
  td, th {    
@@ -71,8 +105,10 @@ table {
     <td>
     <% if current_user.company.present? %>
 <% if current_user.company.stall.present? %>
+<% if  @stall.company.user == current_user %>
       <h3 style="text-align: right;"><%= link_to '+add', custom_stall_contacts_path  %></h3>
 
+<% end %>
 <% end %>
 <% end %>
          <%= @stall.company.user.profile.firstname %> <%= @stall.company.user.profile.lastname %></br>
@@ -91,11 +127,13 @@ table {
 
 <% if current_user.company.present? %>
 <% if current_user.company.stall.present? %>
+<% if  @stall.company.user == current_user %>
 
 	<div class="btn-group">
 		<%= link_to 'Edit', edit_stall_path(@stall), class: "btn btn-default" %>
 		<%= link_to 'Destroy', @stall, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
 	</div>
 
+<% end %>
 <% end %>
 <% end %>

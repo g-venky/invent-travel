@@ -5,8 +5,14 @@ class StallsController < ApplicationController
   # GET /stalls
   # GET /stalls.json
   def index
+            session[:conversations] ||= []
+ 
+    @users = User.all.where.not(id: current_user)
+  
+    @conversations = Conversation.includes(:recipient, :messages)
+                                 .find(session[:conversations])
+   @stalls = Stall.all
 
-  @stall=Stall.all
   end
    def stall_promotions
  @stall = Stall.find(params[:id])
@@ -36,8 +42,13 @@ end
   # GET /stalls/1
   # GET /stalls/1.json
   def show
+                session[:conversations] ||= []
  
-   
+    @users = @stall.company.user
+  
+    @conversations = Conversation.includes(:recipient, :messages)
+                                 .find(session[:conversations])
+ 
   end
 
 # def stall
