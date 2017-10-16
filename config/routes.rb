@@ -36,7 +36,7 @@ get 'stalls/:id/stall_brouchers' => 'stalls#stall_brouchers', :as => :custom_sta
 get 'stalls/:id/stall_reviews' => 'stalls#stall_reviews', :as => :custom_stall_reviews
 get 'stalls/:id/stall_contacts' => 'stalls#stall_contacts', :as => :custom_stall_contacts
 #get 'stalls/:id/stall_my_doubts' => 'stalls#stall_my_doubts', :as => :custom_stall_my_doubts
-
+#get 'my_doubts/:id/my_doubt_doubts' => 'my_doubts#my_doubt_doubts', :as => :custom_my_doubt_doubts
 
   
 	root to: "home#index"

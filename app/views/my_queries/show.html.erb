@@ -62,7 +62,7 @@ table {
   <%= render :partial => @my_query.quotes %>
 </div>
 
-<% end %>
+<% else %>
 <% if current_user.company.present? %>
 <% if current_user.company.stall.present? -%>
  <table>
@@ -110,7 +110,7 @@ table {
 
 <% end %>
 <% end %>
-
+<% end %>
 
      <h4> <%= link_to 'Back', my_queries_path %></h4>
  

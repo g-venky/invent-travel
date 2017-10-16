@@ -29,13 +29,7 @@ end
 end
   def stall_contacts
  @stall = Stall.find(params[:id])
- @contacts = current_user.contacts
-
- #render plain: {posts: @posts.inspect, user: @user.inspect} 
-end
-   def stall_doubts
- @stall = Stall.find(params[:id])
- @my_doubts = @stall.company.user.my_doubts
+ @contacts = Contact.all
 
  #render plain: {posts: @posts.inspect, user: @user.inspect} 
 end
@@ -108,6 +102,17 @@ end
       format.json { head :no_content }
     end
   end
+    def contact
+    user = User.find(params[:user_id])
+    @profile =  current_user.profile
+    contact = @profile.user.contact
+    @profile.contact.push user.email unless contact.include?(user.email)
+    @profile.save
+
+  
+    redirect_to :contactss
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

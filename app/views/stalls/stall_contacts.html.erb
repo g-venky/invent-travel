@@ -1,71 +1,30 @@
 
-<style>
-
-
-table {
-    border: 1px solid #ddd; 
-    width: 125%;
-}
- th {
-    padding: 30px;
-       text-align: left;
-       font-weight:  bold;
-                font-size: 15px;
-                border-left:  1px solid #ddd; 
-      
-}
-
-
- td {
-    padding: 25px;
-    font-weight:  normal;
-     font-size: 20px;
-     border-bottom:  1px solid #ddd; 
-          border-top:  1px solid #ddd; 
-           border-left:  1px solid #ddd; 
-}
-</style>
 <p id="notice"><%= notice %></p>
 
 <h1>Contacts</h1>
 
-<table>
 
-    <tr>
 
-    <th>Name</th>
-      <th>Contact Number</th>
-      <th>Email id</th>
-      <th>Department</th>
-      <th>Designation</th>
-      <th>Travel segments</th>
-      <th>Deals on</th>
-      <th>Head Office Location</th>
-      <th>Contact Name</th>
-
-      <th colspan="3"></th>
-    </tr>
- 
 
   
     <% @contacts.each do |contact| %>
-      <tr>
-      <td><%= contact.stall.seller.profile.organization %></td>
-        <td><%= contact.number %></td>
-        <td><%= contact.email %></td>
-        <td><%= contact.department %></td>
-        <td><%= contact.stall.seller.profile.designation %></td>
-          <td><%= contact.stall.seller.profile.segments %></td>
-          <td><%= contact.stall.seller.profile.deals %></td>
-           <td><%= contact.stall.seller. profile.headoffice %></td>
-            <td><%=  contact.stall.seller.profile.firstname %></td>
+           
+ 
        
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-  
-      </tr>
+        
+         
+         <div style="text-align: center;">
+            <h3><%=  contact.user.profile.firstname %></h3></br>
+             <h4><%= contact.user.profile.organization %></h4></br>
+              <h4><%= contact.user.profile.email %></h4></br>
+              <h4><%= contact.user.profile.department %></h4></br>
+              
+        <h4><%= contact.user.profile.designation %></h4></br>
+ 
+      <%= link_to 'Add Contact', stall_path(@stall) %>
+      </div>
     <% end %>
   
-</table>
+
 
 <br>
-<%= link_to 'Add Contact', new_contact_path %>

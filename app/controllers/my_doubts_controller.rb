@@ -5,7 +5,9 @@ class MyDoubtsController < ApplicationController
   # GET /my_doubts
   # GET /my_doubts.json
   def index
+    
     @my_doubts = MyDoubt.all
+
   end
 
   # GET /my_doubts/1

@@ -39,10 +39,23 @@ table {
       <th >Tour Requirements</th>
       <th >Quotes Received</th>
   </tr>
-  
+  <% if current_user.company.present? %>
+<% if current_user.company.stall.present? -%>
+ <% @my_queries.each do |my_query| %>
+       <tr>
+          <td ><%= my_query.query_number %></td>
+        <td ><%= my_query.destination %></td>
+           <td><%= my_query.pax %> adults, <%= my_query.child %> children</td>
+        <td ><%= my_query.travel_date %></td>
+        <td><%= my_query.duration %></td>
+        <td ><%= my_query.tour_requirements %></td>
+        <td><%= link_to my_query.quotes.count ,my_query %></td>
 
-
-
+  </tr>
+       <% end %>
+       <% end %>
+    <% else %>
+    
     <% @my_queries.each do |my_query| %>
     <% if current_user==my_query.user %>
     
@@ -58,9 +71,10 @@ table {
   </tr>
  
      
-      <% end %>
+    
     <% end %>
- 
+    <% end %>
+    <% end %>
 </table>
 
  

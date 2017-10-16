@@ -71,7 +71,7 @@ table {
     <td>
     <% if current_user.company.present? %>
 <% if current_user.company.stall.present? %>
-      <h3 style="text-align: right;"><%= link_to '+add', contacts_path  %></h3>
+      <h3 style="text-align: right;"><%= link_to '+add', custom_stall_contacts_path  %></h3>
 
 <% end %>
 <% end %>
