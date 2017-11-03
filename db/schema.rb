@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016064936) do
+ActiveRecord::Schema.define(version: 20171103144116) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -19,6 +19,22 @@ ActiveRecord::Schema.define(version: 20171016064936) do
     t.string "title"
     t.string "document"
     t.index ["stall_id"], name: "index_brouchers_on_stall_id"
+  end
+
+  create_table "commentreplies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "body"
+    t.integer "comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_commentreplies_on_user_id"
+  end
+
+  create_table "commentreplies_comments", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "commentreply_id", null: false
+    t.bigint "comment_id", null: false
+    t.index ["comment_id", "commentreply_id"], name: "index_commentreplies_comments_on_comment_id_and_commentreply_id"
+    t.index ["commentreply_id", "comment_id"], name: "index_commentreplies_comments_on_commentreply_id_and_comment_id"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -149,6 +165,7 @@ ActiveRecord::Schema.define(version: 20171016064936) do
     t.text "body"
     t.integer "my_doubt_id"
     t.bigint "user_id"
+    t.integer "comment_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
@@ -252,6 +269,7 @@ ActiveRecord::Schema.define(version: 20171016064936) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
+  add_foreign_key "commentreplies", "users"
   add_foreign_key "contacts", "sellers"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"

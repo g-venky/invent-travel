@@ -7,6 +7,9 @@ class MyQueriesController < ApplicationController
     @my_queries = MyQuery.all
   end
 
+  def my_query_queries
+     @my_queries = MyQuery.all
+  end
   # GET /my_queries/1
   # GET /my_queries/1.json
   def show

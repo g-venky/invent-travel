@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show,:edit]
- 
+  before_action :authenticate_user!, except: [:index]
+  #def show
+  #end
+
   def create
     @topic = Topic.find(params[:topic_id])
     @comment = @topic.comments.new(comment_params)
@@ -10,8 +12,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @topic, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
-      else
+        format.json { render :show, status: :created, location: @comment }
         format.html { render action: "new" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end

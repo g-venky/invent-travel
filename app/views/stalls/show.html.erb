@@ -4,8 +4,8 @@
 <% if current_user.company.stall.present? %>
 <% if  @stall.company.user == current_user %>
  <button type="button" class="btn btn-info"> <%=  'Online Stall'%></button>
-   <button type="button" class="btn btn-info"> <%= link_to 'Queries', my_queries_path %></button>
-      <button type="button" class="btn btn-info"> <%= link_to 'Doubts', my_doubts_path %></button>
+   <button type="button" class="btn btn-info"> <%= link_to 'Queries', custom_my_query_queries_path %></button>
+      <button type="button" class="btn btn-info"> <%= link_to 'Doubts',custom_my_doubt_doubts_path %></button>
         <button type="button" class="btn btn-info"> <%= link_to 'Recent Registred Buyers', stalls_path %></button>
            <% end %>
            <% end %>

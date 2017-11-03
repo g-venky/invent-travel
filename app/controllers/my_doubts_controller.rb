@@ -10,6 +10,9 @@ class MyDoubtsController < ApplicationController
 
   end
 
+  def my_doubt_doubts
+    @my_doubts = MyDoubt.all
+  end
   # GET /my_doubts/1
   # GET /my_doubts/1.json
   def show

@@ -1,4 +1,3 @@
-<h3 style="text-align: right;"><%= link_to 'Add My Query', new_my_query_path %></h3>
 <style>
 
 
@@ -39,11 +38,9 @@ table {
       <th >Tour Requirements</th>
       <th >Quotes Received</th>
   </tr>
-
-    
-    <% @my_queries.each do |my_query| %>
-    <% if current_user==my_query.user %>
-    
+  <% if current_user.company.present? %>
+<% if current_user.company.stall.present? -%>
+ <% @my_queries.each do |my_query| %>
        <tr>
           <td ><%= my_query.query_number %></td>
         <td ><%= my_query.destination %></td>
@@ -54,14 +51,6 @@ table {
         <td><%= link_to my_query.quotes.count ,my_query %></td>
 
   </tr>
- 
-     
-    
-    <% end %>
-    <% end %>
-    
-</table>
-
- 
-<br>
-
+       <% end %>
+       <% end %>
+        <% end %>

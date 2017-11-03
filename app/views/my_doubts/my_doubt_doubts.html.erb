@@ -23,9 +23,7 @@ table {
            border-left:  1px solid #ddd; 
 }
 </style>
-<ul class="nav navbar-nav navbar-right">
-  <li ><%= link_to 'Add My Doubt', new_my_doubt_path %></li>
-</ul>
+
 <p id="notice"><%= notice %></p>
  <table>
   <tr>
@@ -35,23 +33,20 @@ table {
   </tr>
 
 
-
-
-
-
-  <% @my_doubts.each do |my_doubt| %>
-    <% if current_user==my_doubt.user %>
-
+<% if current_user.company.present? %>
+<% if current_user.company.stall.present? -%>
+   <% @my_doubts.each do |my_doubt| %>
 
   <tr>
     <td><%= my_doubt.destination %></td>
     <td><%= my_doubt.doubt_details %></td>
     <td><%= link_to my_doubt.replies.count ,my_doubt %></td>
-   
+
+  </tr>
+
  
-</tr>
 
 
-<% end %>
-<% end %>
-</table>
+  <% end %>
+  <% end %>
+  <% end %>

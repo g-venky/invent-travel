@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+
     resources :conversations, only: [:create] do
     member do
       post :close
@@ -43,8 +44,8 @@ get 'stalls/:id/stall_brouchers' => 'stalls#stall_brouchers', :as => :custom_sta
 get 'stalls/:id/stall_reviews' => 'stalls#stall_reviews', :as => :custom_stall_reviews
 get 'stalls/:id/stall_contacts' => 'stalls#stall_contacts', :as => :custom_stall_contacts
 #get 'stalls/:id/stall_my_doubts' => 'stalls#stall_my_doubts', :as => :custom_stall_my_doubts
-#get 'my_doubts/:id/my_doubt_doubts' => 'my_doubts#my_doubt_doubts', :as => :custom_my_doubt_doubts
-
+get 'my_doubts/:id/my_doubt_doubts' => 'my_doubts#my_doubt_doubts', :as => :custom_my_doubt_doubts
+get 'my_queries/:id/my_query_queries' => 'my_queries#my_query_queries', :as => :custom_my_query_queries
   
 	root to: "home#index"
   get 'home/stall'
@@ -54,14 +55,15 @@ get 'stalls/:id/stall_contacts' => 'stalls#stall_contacts', :as => :custom_stall
   get 'home/online_stall'
   root 'home#online_stall'
 
-	
+	     resources :comments do
+    resources :commentreplies
+  end
+      
   	resources :topics do
-    	member do
-     	 	put "like",    to:    "topics#upvote"
-      		put "dislike", to:    "topics#downvote"
-    	end
    		resources :comments
-   	end
+  end
+       
+   
 	resources :promotions do
     	member do
       		put "like",    to:    "promotions#upvote"

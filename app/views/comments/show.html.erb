@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @comment.topic_id %>
-</p>
+
 
 <p>
-  <strong>Body:</strong>
+  <strong></strong>
   <%= @comment.body %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @comment.user %>
-</p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+
+<div id="commentreplies">
+  <%= render :partial => @comment.commentreplies %>
+</div>
+<%= simple_form_for [@comment, Commentreply.new]  do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Add Reply", class: "btn btn-primary" %>
+<% end %>
