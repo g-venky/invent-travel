@@ -5,6 +5,7 @@ class CommentrepliesController < ApplicationController
   # GET /commentreplies.json
 
   def create
+
     @comment = Comment.find(params[:comment_id])
     @commentreply = @comment.commentreplies.new(commentreply_params)
     @commentreply.user = current_user

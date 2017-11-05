@@ -1,8 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
-  #def show
-  #end
+
 
   def create
     @topic = Topic.find(params[:topic_id])

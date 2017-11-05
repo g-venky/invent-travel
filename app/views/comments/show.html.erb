@@ -9,13 +9,3 @@
 
 
 
-<div id="commentreplies">
-  <%= render :partial => @comment.commentreplies %>
-</div>
-<%= simple_form_for [@comment, Commentreply.new]  do |f| %>
-  <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
-  </div>
-  <br>
-  <%= f.submit "Add Reply", class: "btn btn-primary" %>
-<% end %>

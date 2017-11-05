@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103144116) do
+ActiveRecord::Schema.define(version: 20171105095802) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 20171103144116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_commentreplies_on_user_id"
-  end
-
-  create_table "commentreplies_comments", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "commentreply_id", null: false
-    t.bigint "comment_id", null: false
-    t.index ["comment_id", "commentreply_id"], name: "index_commentreplies_comments_on_comment_id_and_commentreply_id"
-    t.index ["commentreply_id", "comment_id"], name: "index_commentreplies_comments_on_commentreply_id_and_comment_id"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -250,6 +243,7 @@ ActiveRecord::Schema.define(version: 20171103144116) do
     t.integer "failed_attempts"
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.integer "mobile"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
