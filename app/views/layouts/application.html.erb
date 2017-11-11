@@ -2,52 +2,53 @@
 <html>
 <head>
   <title>InventTravel</title>
+  <meta charset="utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
 </head>
 <body>
-	<header class="navbar navbar-primary" role="navigation">
-    <div class="navbar-inner">
-      <div class="container">
-      
-           <div class="navbar-default navbar-static-side fixed" role="navigation">
 
-        <nav class="collapse navbar-collapse navbar-ex1-collapse">
-        	<% if user_signed_in? -%>
-						<ul class="nav navbar-nav navbar-right">
 
-							<li><%= link_to "Home" , root_path  %></li>
 						
-							<li><%= link_to 'Become Seller', home_stall_path %></li>
 
-							<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-						</ul>
+						
+	<div class="header">
+	
+	 <ul id="a">
+
+        	<% if user_signed_in? -%>
+								 <li class="active"><%= link_to "Home" , root_path  %></li>
+								
+								 	<li style="float: right;"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+							<li style="float: right;"><%= link_to 'Become Seller', home_stall_path %></li>
+
+						
+
+
+						
 					<% else -%>
-						<ul class="nav navbar-nav pull-right">
+						
 							<li><%= link_to 'Sign up', new_user_registration_path %></li>
 							<li><%= link_to 'Sign in', new_user_session_path %></li>
-						</ul>
+						
 					<% end -%>
           
-          </ul>
-        </div>
-        </nav>
-      </div>
-    </div>
-  </header>
+   </ul>
 
-	<div id="main_content" class="container">
+
+</div>
 		<% flash.each do |name, msg| %>
 			<%= content_tag(:div, msg, class: "alert alert-info") %>
 		<% end %>
 
-			<div id="content" class="col-md-9 center-block">
 				<%= yield %>
-			</div>
-		</div>
-	</div>
+			
+		
+
 </body>
 </html>
 

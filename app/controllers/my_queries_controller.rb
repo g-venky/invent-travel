@@ -3,6 +3,11 @@ class MyQueriesController < ApplicationController
    before_action :authenticate_user!, except: [:index]
   # GET /my_queries
   # GET /my_queries.json
+ # before_action :set_account_number
+#def set_account_number
+  #last_account_number = MyQuery.maximum(:query_number)
+  #self.query_number = last_account_number.to_i + 1
+#end
   def index
     @my_queries = MyQuery.all
   end

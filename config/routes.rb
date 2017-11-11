@@ -54,6 +54,7 @@ get 'my_queries/:id/my_query_queries' => 'my_queries#my_query_queries', :as => :
   root 'home#operator'
   get 'home/online_stall'
   root 'home#online_stall'
+  
 
 	     resources :comments #do
     #resources :commentreplies

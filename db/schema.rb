@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105095802) do
+ActiveRecord::Schema.define(version: 20171106105347) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(version: 20171105095802) do
   end
 
   create_table "my_queries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "query_number"
     t.text "destination"
     t.text "pax"
     t.text "duration"
@@ -105,6 +104,7 @@ ActiveRecord::Schema.define(version: 20171105095802) do
     t.datetime "travel_date"
     t.text "child"
     t.text "querytype"
+    t.integer "query_number"
     t.index ["user_id"], name: "index_my_queries_on_user_id"
   end
 

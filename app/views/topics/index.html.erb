@@ -1,27 +1,4 @@
 
-<style>
-
-table {
-    border: 1px solid #ddd; 
-    width: 125%;
-}
- th {
-    padding: 15px;
-       text-align: left;
-       font-weight:  normal;
-        background-color: lightblue;
-        font-size: 25px;
-      
-}
-
-
- td {
-    padding: 30px;
-    font-weight:  bold;
-     font-size: 20px;
-     border-bottom:  1px solid #ddd; 
-}
-</style>
 <ul class="nav navbar-nav navbar-right">
   <li style="font-weight: bold;" ><%= link_to 'Add Your Topic', new_topic_path %></li>
 </ul>
@@ -38,9 +15,39 @@ table {
   <tr>
    <td> <%= topic.details %></td>
   </tr>
-  <td><button style="background: lightblue"><%= topic.comments.count %><%= link_to 'comments' ,topic %></button><strong style="background: lightblue"></strong></td>
+  <tr>
+  <td>
+  <button><%= topic.comments.count %>comments</button>
+  </td>
+  </tr>
+
+
+<tr>
+<td>
+
+
+
+ 
+      <%= render :partial => topic.comments %>
+   
+
+    <%= form_for [topic, topic.comments.new]  do |f| %>
+      
+      
+            <%= f.text_area :body, rows: 2, cols: 60,
+                            placeholder: "Write a comment..." %>
+         
+            <%= f.submit ' Comment' %>
+      
+      
+    <% end %>
+ 
+
+ </td>
+ </tr> 
   
 </table></br>
+
 
 
 

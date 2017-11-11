@@ -1,18 +1,101 @@
 
+<div class="content">
 <% if user_signed_in? %>
-    <h3><%= link_to 'clarify Destination Doubts',new_topic_path, class: "btn btn-default"  %></h3>
-    <h3><%= link_to 'Get Qutation for My Query',new_my_query_path, class: "btn btn-default"  %></h3>
-    <%= link_to 'promotions', promotions_path , class: "btn btn-info"  %>
-    <%= link_to 'Discussions',topics_path ,class: "btn btn-info"%>
-    <%= link_to "My Doubt", my_doubts_path  %><%= link_to "My Queries",my_queries_path  %>
+<div class="row">
+<div class="column side">
+
+   <h3 class="active"><%= link_to "My Doubt", my_doubts_path  %></h3>
+   <h3><%= link_to "My Queries",my_queries_path  %></h3>
   <% if current_user.profile %>
-     <%= link_to "My Profile", profile_path(current_user.profile) %>
+  <h3>  <%= link_to "My Profile", profile_path(current_user.profile) %></h3>
   <% else %>
-     <%= link_to 'My Profile',new_profile_path %>
+   <h3> <%= link_to 'My Profile',new_profile_path %></h3>
   <% end %>
-     <%= link_to "My contact list", contacts_path  %>
+   <h3> <%= link_to "My contact list", contacts_path  %></h3>
+
+
+</div> 
+<div class="column middle">
+
+
+  <button type="button" class="btn btn-default btn-lg btn-tall btn-circle" data-toggle="modal" data-target="#myModal">clarify Destination Doubts</button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Create Topic</h4>
+              </div>
+              <div class="modal-body">
+<%= form_for(Topic.new) do |f| %>
+    <div class="form-group">
+    <%= f.label :discussions %><br>
+    <%= f.text_field :discussions, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :details %><br>
+    <%= f.text_field :details, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit "share", class: "btn btn-lg btn-primary" %>
+  </div>
+
 <% end %>
+
+
+
+              </div>
+              <div class="modal-footer" style="border: none">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+  
  
+    <h4><%= link_to 'Get Qutation for My Query',new_my_query_path, class: "btn "  %></h4>
+    <ul id="b">
+   <li  class="active" > <%= link_to 'promotions', root_path%></li>
+
+   <li> <%= link_to 'Discussions',topics_path%></li>
+   </ul>
+
+<% @promotions.each do |promotion| %>
+<% if user_signed_in? %>
+
+<table >
+  <tr>
+    <th><strong> <%= link_to promotion.stall.company.companyname ,stall_path(promotion.stall) %></strong><small style="font-size: 15px;" > <%= time_ago_in_words(promotion.created_at) %>  ago</small></th> 
+  </tr>
+  <tr>
+    <td style="text-align: center;"><%=  promotion.destination %></td>
+  </tr>
+  <tr>
+   <td ><%= image_tag promotion.image.url(:medium ) %></td>
+   <tr>
+   <td><%=promotion.details %></td>
+   </tr>
+  </tr>
+  <tr>
+   <td> <%= link_to like_promotion_path(promotion), method: :put, class: "btn btn-info btn-sm" do %>
+       <i class="glyphicon glyphicon-thumbs-up"></i>
+        like
+        <%= promotion.get_likes.size %>
+      <% end %></td>
+  </tr>
+</table></br>  
+<% end %>
+<% end %>
+
+
+</div>
+
+<% end %>
+<div class="column side">
 <% if user_signed_in? -%>
   <% if current_user.company.present? %>     
      <% if current_user.company.stall.present? %>
@@ -23,4 +106,6 @@
 
   <% end %> 
 <% end %>  
-
+</div>
+</div>
+</div>

@@ -1,14 +1,10 @@
-<%= div_for(comment) do %>
-	<div class="comments_wrapper clearfix">
-		<div class="pull-left">
-			
-			<p style="font-size: 15px;"><strong style="color: lightblue;"> <%= comment.user.email  %></strong> :<%= comment.body %></p>
-		
-		</div>
+
+<div class="v">
+ <h5><%= comment.user.email  %> <small><span class="date"><%= time_ago_in_words(comment.created_at) %> ago :  </span></small></h5>
+ 
+   <h4> <%= comment.body %></h4>
+ </div>
 
 
-	</div>
-
-<% end %>
 
 

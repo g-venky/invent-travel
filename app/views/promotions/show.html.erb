@@ -1,25 +1,4 @@
-<style>
-table {
-    border: 1px solid #ddd; 
-    width: 100%;
-}
- th {
-    padding: 15px;
-       text-align: left;
-       font-weight:  normal;
-        background-color: lightblue;
-        font-size: 25px;
-      
-}
 
-
- td {
-    padding: 30px;
-    font-weight:  bold;
-     font-size: 20px;
-     border-bottom:  1px solid #ddd; 
-}
-</style>
 
 <p id="notice"><%= notice %></p>
 
@@ -29,12 +8,12 @@ table {
     <th style="text-align: center;"><%= @promotion.destination %></th> 
   </tr>
   <tr>
-   <td ><%= @promotion.details %></br><%= image_tag @promotion.image.url(:medium) %></td>
+   <td ><%= @promotion.details %></td></tr><tr><td><%= image_tag @promotion.image.url(:medium) %></td>
   </tr>
   <tr>
-   <td>  <%= link_to like_promotion_path(@promotion), method: :put, class: "btn btn-primary" do %>
-    <span class="glyphicon glyphicon-chevron-up"></span>
-    Upvote
+   <td>  <%= link_to like_promotion_path(@promotion), method: :put, class: "btn btn-info" do %>
+       <i class="glyphicon glyphicon-thumbs-up"></i>
+  Like
     <%= @promotion.get_upvotes.size %>
   <% end %>
 </td>

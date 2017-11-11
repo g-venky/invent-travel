@@ -1,31 +1,5 @@
-<h3 style="text-align: right;"><%= link_to 'Add My Query', new_my_query_path %></h3>
-<style>
+<%= link_to 'Add My Query', new_my_query_path %>
 
-
-table {
-    border: 1px solid #ddd; 
-    width: 125%;
-}
- th {
-    padding: 30px;
-       text-align: left;
-       font-weight:  bold;
-                font-size: 15px;
-                border-left:  1px solid #ddd; 
-      
-}
-
-
- td {
-    padding: 30px;
-    font-weight:  normal;
-     font-size: 20px;
-     border-bottom:  1px solid #ddd; 
-          border-top:  1px solid #ddd; 
-          border-right: 1px solid #ddd; 
-         
-}
-</style>
 <p id="notice"><%= notice %></p>
 
 <h1>My Queries</h1>
@@ -45,7 +19,7 @@ table {
     <% if current_user==my_query.user %>
     
        <tr>
-          <td ><%= my_query.query_number %></td>
+          <td ><%= my_query.id %></td>
         <td ><%= my_query.destination %></td>
            <td><%= my_query.pax %> adults, <%= my_query.child %> children</td>
         <td ><%= my_query.travel_date %></td>

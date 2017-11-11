@@ -10,7 +10,8 @@ class HomeController < ApplicationController
 
 		
 		@promotions = Promotion.all
-
+		@topics = Topic.all
+		
 
 	end
 	
