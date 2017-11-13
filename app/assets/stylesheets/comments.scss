@@ -1,12 +1,17 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.v{
-	text-align: center;
-	text-decoration: none;
+ul.com{
+	  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+   
 
-	h5{
+	li{
+	text-decoration: none;
 	float: left;
-	color: skyblue; 
+	padding: 20px;
 	}
 }

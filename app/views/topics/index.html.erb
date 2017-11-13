@@ -1,6 +1,9 @@
-
+<div class="row2">
+<div class="column2 side2">
+</div>
+<div class="column2 middle2">
 <ul class="nav navbar-nav navbar-right">
-  <li style="font-weight: bold;" ><%= link_to 'Add Your Topic', new_topic_path %></li>
+  <li style="font-weight: bold;" ><%= link_to 'Add Your Topic', new_topic_path , class: "btn btn-info" %></li>
 </ul>
 <% @topics.each do |topic| %>
 
@@ -15,15 +18,14 @@
   <tr>
    <td> <%= topic.details %></td>
   </tr>
-  <tr>
-  <td>
-  <button><%= topic.comments.count %>comments</button>
-  </td>
-  </tr>
+ 
+ 
 
 
 <tr>
 <td>
+<br /><%= topic.comments.count %><input type="button" class="myButton" value="comments"/>
+<div class="myDiv">
 
 
 
@@ -42,7 +44,7 @@
       
     <% end %>
  
-
+</div>
  </td>
  </tr> 
   
@@ -52,3 +54,15 @@
 
 
 <% end %>
+
+
+<script type="text/javascript">
+  $('.myButton').on('click', function (event) {
+     $(this).next('.myDiv').toggle('swing');
+});
+</script>
+</div>
+
+<div class="column2 side2">
+</div>
+</div>

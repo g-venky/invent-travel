@@ -1,3 +1,7 @@
+<div class="row2">
+<div class="column2 side2">
+</div>
+<div class="column2 middle2">
 <%= form_for(@my_query) do |f| %>
   <% if @my_query.errors.any? %>
     <div id="error_explanation">
@@ -39,12 +43,12 @@
           
               <div class="form-group">
                   <%= f.label :Duration %><br>
-                  <%= f.text_field :duration, class: "form-control" %>
+                  <%= f.text_area :duration, class: "form-control" %>
               </div>
           
               <div class="form-group">
                    <%= f.label :Tour_Requirements %><br>
-                  <%= f.text_field :tour_requirements, class: "form-control" %>
+                  <%= f.text_area :tour_requirements, class: "form-control" %>
               </div>
             </td>
          
@@ -54,3 +58,7 @@
   </div>
 
 <% end %>
+</div>
+<div class="column2 side2">
+</div>
+</div>

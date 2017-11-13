@@ -1,11 +1,15 @@
+<div class="tour">
+<ul>
 <% if current_user.company.present? %>
 	<% if current_user.company.stall.present?-%>
-		<%= link_to 'tour_operator', stall_path(current_user.company.stall) %>
+		<li><%= link_to 'Tour operator', stall_path(current_user.company.stall) %></li>
+	
 	<% else %>
- 		<%= link_to 'tour_operator', new_stall_path %>
+ 		<li><%= link_to 'Tour operator', new_stall_path %></li>
 	<% end %>
 <% else %>
-		<%= link_to 'tour operator', new_company_path %>
+		<li><%= link_to 'Tour operator', new_company_path %></li>
 
 <% end %>
-
+</ul>
+</div>

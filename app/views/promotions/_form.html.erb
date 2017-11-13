@@ -1,3 +1,7 @@
+<div class="row2">
+<div class="column2 side2">
+</div>
+<div class="column2 middle2">
 <%= form_for @promotion,   html: {  multipart: true} do |f| %>
   <% if @promotion.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +17,7 @@
 
   <div class="form-group">
     <%= f.label :Destination %><br>
-    <%= f.text_field :destination, class: "form-control" %>
+    <%= f.text_area :destination, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :image %><br>
@@ -21,7 +25,7 @@
   </div>
   <div class="form-group">
     <%= f.label :details %><br>
-    <%= f.text_field :details, class: "form-control" %>
+    <%= f.text_area :details, class: "form-control" %>
   </div>
   <br>
   <div class="form-group">
@@ -29,3 +33,8 @@
   </div>
 
 <% end %>
+</div>
+
+<div class="column2 side2">
+</div>
+</div>

@@ -1,16 +1,20 @@
+<div class="row2">
+<div class="column2 side2">
+</div>
+<div class="column2 middle2">
 <h2>Sign in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 
   <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, class: "form-control", required: false %>
+    <%= f.label :email %></br>
+    <%= f.email_field :email, autofocus: true, required: false %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control", required: false %>
+    <%= f.label :password %></br>
+    <%= f.password_field :password, required: false %>
   </div>
 
   <div class="checkbox">
@@ -26,3 +30,8 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+</div>
+
+<div class="column2 side2">
+</div>
+</div>

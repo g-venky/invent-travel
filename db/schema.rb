@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106105347) do
+ActiveRecord::Schema.define(version: 20171113085647) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -71,6 +71,13 @@ ActiveRecord::Schema.define(version: 20171106105347) do
     t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
     t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "promotion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -143,6 +150,20 @@ ActiveRecord::Schema.define(version: 20171106105347) do
     t.datetime "image_updated_at"
     t.integer "stall_id"
     t.bigint "seller_id"
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", limit: 24, default: 0.0
+    t.index ["cached_votes_down"], name: "index_promotions_on_cached_votes_down"
+    t.index ["cached_votes_score"], name: "index_promotions_on_cached_votes_score"
+    t.index ["cached_votes_total"], name: "index_promotions_on_cached_votes_total"
+    t.index ["cached_votes_up"], name: "index_promotions_on_cached_votes_up"
+    t.index ["cached_weighted_average"], name: "index_promotions_on_cached_weighted_average"
+    t.index ["cached_weighted_score"], name: "index_promotions_on_cached_weighted_score"
+    t.index ["cached_weighted_total"], name: "index_promotions_on_cached_weighted_total"
     t.index ["seller_id"], name: "index_promotions_on_seller_id"
     t.index ["stall_id"], name: "index_promotions_on_stall_id"
   end
@@ -208,6 +229,10 @@ ActiveRecord::Schema.define(version: 20171106105347) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["company_id"], name: "index_stalls_on_company_id"
     t.index ["user_id"], name: "index_stalls_on_user_id"
   end

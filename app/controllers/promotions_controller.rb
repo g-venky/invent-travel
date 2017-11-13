@@ -1,8 +1,9 @@
 class PromotionsController < ApplicationController
-  before_action :set_promotion, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!, except: [:index]
+  before_action :set_promotion, only: [:vote,:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:vote,:index]
   # GET /promotions
   # GET /promotions.json
+  respond_to :js, :json, :html
   def index
 
       @promotions=Promotion.order(created_at: :desc)
@@ -72,10 +73,10 @@ end
       format.json { head :no_content }
     end
   end
-     def upvote
+      def upvote
     @promotion = Promotion.find(params[:id])
     @promotion.upvote_by current_user
-    redirect_to :promotion
+    redirect_back fallback_location: root_path
   end
 
   def downvote
@@ -83,6 +84,7 @@ end
     @promotion.downvote_from current_user
     redirect_to :promotion
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

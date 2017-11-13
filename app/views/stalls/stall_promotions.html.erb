@@ -1,33 +1,14 @@
 
-<style>
- h3 {    
-    text-align: left;
-    font-size: 25px;
-    background-color: lightblue;
-   
-}
 
-table {
-    border: 1px solid #ddd; 
-    width: 125%;
-}
- th {
-    padding: 15px;
-       text-align: left;
-       font-weight:  normal;
-        background-color: lightblue;
-        font-size: 25px;
-      
-}
-
-
- td {
-    padding: 30px;
-    font-weight:  bold;
-     font-size: 20px;
-     border-bottom:  1px solid #ddd; 
-}
-</style>
+<div class="row2">
+<div class="column2 side2">
+</div>
+<div class="column2 middle2">
+<% if current_user.company.present? %>
+<% if current_user.company.stall.present? -%>
+ <h6 style="float: right;"><%= link_to ' Add promotion', new_promotion_path, class: "btn btn-info"  %></h6>
+<% end %> 
+<% end %> 
 <% @promotions.each do |promotion|%>
   <% if user_signed_in? %>
 
@@ -39,14 +20,12 @@ table {
   <tr>
    <td ><%= image_tag promotion.image.url(:medium) %></br><%=promotion.details %></td>
   </tr>
-  <tr>
-   <td> <%= link_to like_promotion_path(promotion), method: :put, class: "btn btn-info btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-up"></span>
-        Upvote
-        <%= promotion.get_upvotes.size %>
-      <% end %></td>
-  </tr>
+
 </table></br>  
 <% end %>
 <% end %>
-<%= link_to 'Back', stall_path(@stall) %>
+<%= link_to 'Back', stall_path(@stall) , class: "btn btn-info" %>
+</div>
+<div class="column2 side2">
+</div>
+</div>

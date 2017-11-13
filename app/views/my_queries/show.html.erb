@@ -1,4 +1,7 @@
-
+<div class="row2">
+<div class="column2 side2">
+</div>
+<div class="column2 middle2">
 <p id="notice"><%= notice %></p>
 <% if current_user==@my_query.user %>
 <table >
@@ -52,7 +55,7 @@
     </tr>
 
       <tr>
-        <td ><%= @my_query.query_number %></td>
+        <td ><%= @my_query.id %></td>
         <td ><%= @my_query.destination %></td>
         <td ><%= @my_query.pax %></td>
         <td ><%= @my_query.travel_date %></td>
@@ -87,6 +90,7 @@
 <% end %>
 
      
- 
-
-
+ </div>
+<div class="column2 side2">
+</div>
+</div>

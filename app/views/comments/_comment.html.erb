@@ -1,9 +1,9 @@
 
-<div class="v">
- <h5><%= comment.user.email  %> <small><span class="date"><%= time_ago_in_words(comment.created_at) %> ago :  </span></small></h5>
+<ul class="com">
+ <li><strong><%= comment.user.email  %></strong> <small><span class="date"><%= time_ago_in_words(comment.created_at) %> ago :  </span></small></li></br>
  
-   <h4> <%= comment.body %></h4>
- </div>
+  <li> <%= comment.body %></li></br>
+ </ul>
 
 
 

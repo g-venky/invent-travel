@@ -8,8 +8,7 @@ class HomeController < ApplicationController
                                  .find(session[:conversations])
 
 
-		
-		@promotions = Promotion.all
+		   @promotions=Promotion.order(created_at: :desc)
 		@topics = Topic.all
 		
 

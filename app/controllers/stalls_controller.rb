@@ -133,6 +133,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stall_params
-     params.require(:stall).permit(:image,:about ,:destination,:offices,segments:[])
+     params.require(:stall).permit(:avatar,:image,:about ,:destination,:offices,segments:[])
     end
 end

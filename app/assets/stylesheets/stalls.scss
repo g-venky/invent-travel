@@ -2,3 +2,96 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+ul.online {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: skyblue;
+
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: gray;
+}
+
+.active {
+    background-color: gray;
+}
+}
+h1{
+	
+	width: 100%;
+	text-align: center;
+
+}
+ul.offline {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+
+
+li {
+    float: left;
+     background-color: skyblue;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: gray;
+}
+
+.active {
+    background-color: gray;
+}
+}
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+
+}
+.column2{
+	float: left;
+	padding: 20px;
+
+	
+	
+	
+background-color: lightgray;
+}
+.column2.side2{
+	width: 5%;
+	   background-color: white;
+	  
+	
+}
+.column2.middle2{
+	width: 90%;
+     background-color: white;
+      overflow: hidden;
+;
+     
+      
+	
+}

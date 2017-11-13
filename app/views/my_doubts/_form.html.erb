@@ -1,3 +1,7 @@
+<div class="row2">
+<div class="column2 side2">
+</div>
+<div class="column2 middle2">
 <%= form_for(@my_doubt) do |f| %>
   <% if @my_doubt.errors.any? %>
     <div id="error_explanation">
@@ -13,12 +17,12 @@
 
   <div class="form-group">
     <%= f.label :Destination %><br>
-    <%= f.text_field :destination, class: "form-control" %>
+    <%= f.text_area :destination, class: "form-control" %>
   </div>
   
   <div class="form-group">
     <%= f.label :Doubt_details %><br>
-    <%= f.text_field :doubt_details, class: "form-control" %>
+    <%= f.text_area :doubt_details, class: "form-control" %>
   </div>
   <br>
   <div class="form-group">
@@ -26,3 +30,7 @@
   </div>
 
 <% end %>
+</div>
+<div class="column2 side2">
+</div>
+</div>

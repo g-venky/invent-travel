@@ -1,9 +1,12 @@
-
+<div class="row2">
+<div class="column2 side2">
+</div>
+<div class="column2 middle2">
  <% if user_signed_in? -%>
  <% if current_user.company.present? %>
 <% if current_user.company.stall.present? -%>
 
-  <%= link_to ' Add Your Broucher', new_broucher_path %>
+  <h6 style="float: right;"><%= link_to ' Add Broucher', new_broucher_path , class: "btn btn-info" %></h6>
 <% end %> 
 <% end %> 
  
@@ -19,7 +22,7 @@
     <th> <%=  broucher.title %></th>
     </tr>
     <tr>
-   <td > <%= link_to "Download", broucher.document_url %></td>
+   <td > <%= link_to "Download", broucher.document_url , class: "btn btn-primary" %></td>
  	</tr>
  	</table></br>
       
@@ -32,5 +35,9 @@
  <% end %>
 
  
-  <%= link_to 'Back', stall_path(@stall) %>
+  <%= link_to 'Back', stall_path(@stall), class: "btn btn-info"  %>
    
+</div>
+<div class="column2 side2">
+</div>
+</div>
