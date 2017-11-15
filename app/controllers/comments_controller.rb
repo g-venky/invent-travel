@@ -10,6 +10,11 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        
+          (@topic.users.uniq-[current_user]).each do |user|
+        Notification.create(recipient: user, actor: current_user, action: "posted", notifiable: @comment)
+      end
+
         format.html {  redirect_back fallback_location: @topic, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
         format.html { render action: "new" }

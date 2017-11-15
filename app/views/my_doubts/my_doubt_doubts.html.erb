@@ -1,8 +1,18 @@
+
+
 <div class="row2">
 <div class="column2 side2">
 </div>
 <div class="column2 middle2">
+
+
 <p id="notice"><%= notice %></p>
+
+
+
+
+
+
  <table>
   <tr>
     <th>Destination</th>
@@ -14,6 +24,7 @@
 <% if current_user.company.present? %>
 <% if current_user.company.stall.present? -%>
    <% @my_doubts.each do |my_doubt| %>
+   <% if current_user.company.stall.destination == my_doubt.destination %>
 
   <tr>
     <td><%= my_doubt.destination %></td>
@@ -24,7 +35,7 @@
 
  
 
-
+  <% end %>
   <% end %>
   <% end %>
   <% end %>

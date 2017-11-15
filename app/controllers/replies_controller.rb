@@ -9,7 +9,11 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
+            (@my_doubt.users - [current_user]).each do |user|
+        Notification.create(recipient: user, actor: current_user, action: "replied", notifiable: @reply)
+      end
+
+        format.html { redirect_back fallback_location: @my_doubt, notice: 'Reply was successfully sended.' }
         format.json { render :show, status: :created, location: @reply }
       else
         format.html { render :new }

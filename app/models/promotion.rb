@@ -4,4 +4,5 @@ class Promotion < ApplicationRecord
 	acts_as_votable
 	#belongs_to :seller
 	belongs_to :stall
+	has_many :usefuls
 end

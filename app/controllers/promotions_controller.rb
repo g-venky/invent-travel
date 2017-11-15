@@ -73,6 +73,14 @@ end
       format.json { head :no_content }
     end
   end
+     def vote
+      @promotion = Promotion.find params[:promotion_id]
+
+      vote = current_user.votes.find _or_create_by promotion_id: params[:promotion_id]
+      vote.toggle(:vote)
+
+      respond_with vote
+   end
       def upvote
     @promotion = Promotion.find(params[:id])
     @promotion.upvote_by current_user

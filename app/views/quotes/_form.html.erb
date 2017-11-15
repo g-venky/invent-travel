@@ -1,13 +1,32 @@
-<%= simple_form_for(@quote) do |f| %>
-  <%= f.error_notification %>
+<%= form_with(model: quote, local: true) do |form| %>
+  <% if quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
 
-  <div class="form-inputs">
-    <%= f.input :my_query_id %>
-    <%= f.input :body %>
-    <%= f.association :user %>
+      <ul>
+      <% quote.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :my_query_id %>
+    <%= form.number_field :my_query_id, id: :quote_my_query_id %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, id: :quote_body %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seller %>
+    <%= form.text_field :seller, id: :quote_seller %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
   </div>
 <% end %>

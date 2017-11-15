@@ -77,7 +77,11 @@ get 'my_queries/:id/my_query_queries' => 'my_queries#my_query_queries', :as => :
   	resources :my_doubts do
   		resources :replies
   	end
+      resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
 
 end
-
-  

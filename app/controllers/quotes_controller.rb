@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
-     before_action :authenticate_seller!, except: [:index]
+     before_action :authenticate_user!, except: [:index]
 
   def create
          @my_query = MyQuery.find(params[:my_query_id])
@@ -10,7 +10,10 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to @quote, notice: 'Quote was successfully created.' }
+             (@my_query.users - [current_user]).each do |user|
+        Notification.create(recipient: user, actor: current_user, action: "quoted", notifiable: @quote)
+      end
+        format.html {  redirect_back fallback_location: @my_query, notice: 'Quote was successfully sended.' }
         format.json { render :show, status: :created, location: @quote }
       else
         format.html { render :new }

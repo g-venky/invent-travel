@@ -3,8 +3,13 @@
 <% if user_signed_in? %>
 <div class="row">
 <div class="column side">
-    <h6 style="border: 1px solid skyblue;"><%= image_tag current_user.profile.image.url(:medium) %></h6>
+  <% if current_user.profile.present? %>
+    <h6 style="border: 1px solid skyblue;"> <a href="<%=current_user.profile.image.url(:original) %>" target="_blank"><%= image_tag current_user.profile.image.url(:medium)  %></a></h6>
+    <% unless current_user.profile.image.present? %>
+     <h6 style="border: 1px solid skyblue; padding: 20px; "> <%= link_to 'Upload Profile Pic',new_profile_path %></h6>
+   <% end %>
    <h6 style="text-align: center;"> <%= current_user.profile.website %></h6>
+  <% end %>
   <ul class="my">
   <li class="active"><%= link_to "My Doubt", my_doubts_path  %></li>
    <li><%= link_to "My Queries",my_queries_path  %></li>
@@ -139,7 +144,7 @@
     <td style="text-align: center;"><%=  promotion.destination %></td>
   </tr>
    <tr>
-   <td ><%= image_tag promotion.image.url(:medium) %></br><%=promotion.details %></td>
+   <td > <a href="<%=promotion.image.url(:original) %>" target="_blank"><%= image_tag promotion.image.url(:medium) %></a></br><%=promotion.details %></td>
   </tr>
   </tr>
   <tr>

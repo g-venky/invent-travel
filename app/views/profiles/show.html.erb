@@ -12,7 +12,11 @@
 <tr>
   <th><strong>Organization :     </strong></th>
               <td><%= @profile.organization %></td>
-  <th> <%= image_tag @profile.image.url(:medium) %> </th>
+  <th> <a href="<%=@profile.image.url(:original) %>" target="_blank"><%= image_tag @profile.image.url(:medium) %></a>
+     <% unless current_user.profile.image.present? %>
+     <h6 style="font-weight: bold;"> <%= link_to 'Upload Profile Pic',edit_profile_path(@profile) %></h6>
+   <% end %>
+   </th>
 </tr>
 </p>
 

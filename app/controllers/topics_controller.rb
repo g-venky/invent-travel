@@ -16,9 +16,12 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
+   if current_user.profile.present?
     @topic = current_user.topics.build
+  else
+    redirect_to new_profile_path, notice: 'please complete profile.' 
   end
-
+end
   # GET /topics/1/edit
   def edit
   end

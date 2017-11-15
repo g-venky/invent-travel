@@ -1,0 +1,15 @@
+ 
+<p id="notice"><%= notice %></p>
+
+
+<table>
+  <tr>
+    <th style="text-align: center;"><%= @topic.discussions %></th> 
+  </tr>
+   <tr>
+   <td ><%= @topic.details %></td>
+  </tr>
+
+</table></br> 
+
+ <%= render :partial => @topic.comments %>

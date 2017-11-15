@@ -13,6 +13,7 @@ class User < ApplicationRecord
     has_many :contacts
     has_one :company
     
+  has_many :notifications, foreign_key: :recipient_id
  
   	
 end

@@ -14,7 +14,11 @@
            <% end %>
 <% end %> 
 </ul>
-  <h1 ><%= image_tag @stall.avatar.url(:large ) %></h1></br>
+  <h1 > <% if @stall.avatar.present? %>
+  <a href="<%=@stall.avatar.url(:original) %>" target="_blank"><%= image_tag @stall.avatar.url(:large ) %></a></h1></br>
+  <% else %>
+  <h6 style="text-align: center;padding: 30px;"><%= link_to 'upload cover pic', edit_stall_path(@stall)%></li></h6>
+  <% end %>
   <ul class="offline">
   <li class="active"> <%= link_to 'About_Us', stall_path%></li>
     <li><%= link_to 'promotions', custom_stall_promotions_path %></li>
@@ -24,7 +28,13 @@
      <li style="background-color: white;">  <%= link_to '', stall_path%></li>
     
     
-      <li style="border: 1px solid skyblue;" ><%= image_tag @stall.image.url(:medium) %></li> 
+      <li style="border: 1px solid skyblue;" >
+           <% if @stall.image.present? %>
+       <a href="<%=@stall.image.url(:original) %>" target="_blank"><%= image_tag @stall.image.url(:medium) %></a>
+        <% else %>
+          <%= link_to 'upload stall pic', edit_stall_path(@stall)%>
+        <% end %>
+       </li> 
       <li style="background-color: white;">  <%= link_to '', stall_path%></li>
        <li style=" background-color: green;"><%= link_to 'chat', conversations_path(user_id: @users), remote: true, method: :post %></li>
 
@@ -76,9 +86,10 @@
 <% end %>
 <% end %>
 <% end %>
-         <%= @stall.company.user.profile.firstname %> <%= @stall.company.user.profile.lastname %></br>
-        <%= @stall.company.user.profile.designation %></br>
-         <%= @stall.company.user.profile.email %>
+           <i class="glyphicon glyphicon-user"></i> 
+         <h5><%= @stall.company.user.profile.firstname %> <%= @stall.company.user.profile.lastname %></h5>
+       <h5> <%= @stall.company.user.profile.designation %></h5>
+       <h5>  <%= @stall.company.user.profile.email %></h5>
 
   </td>
   </tr>

@@ -1,0 +1,5 @@
+<%= link_to topic_path(notification.notifiable.topic, anchor: dom_id(notification.notifiable)), class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
+  <%= notification.actor.email %>
+  <%= notification.action %>
+  a <%= notification.notifiable_type.underscore.humanize.downcase %>
+<% end %>
