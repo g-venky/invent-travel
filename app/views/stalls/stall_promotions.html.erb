@@ -1,9 +1,9 @@
 
 
 <div class="row2">
-<div class="column2 side2">
+<div class="column2 side2" style="width: 20%;">
 </div>
-<div class="column2 middle2">
+<div class="column2 middle2" style="width: 60%;">
 <% if current_user.company.present? %>
 <% if current_user.company.stall.present? -%>
  <h6 style="float: right;"><%= link_to ' Add promotion', new_promotion_path, class: "btn btn-info"  %></h6>
@@ -15,10 +15,10 @@
 <table>
 
   <tr>
-    <td style="text-align: center;"><%=  promotion.destination %></td>
+    <td style="text-align: center; border: 1px solid black; background-color: skyblue;"><%=  promotion.destination %></td>
   </tr>
   <tr>
-   <td ><%= image_tag promotion.image.url(:medium) %></br><%=promotion.details %></td>
+   <td  style="border: 1px solid black;"><%= image_tag promotion.image.url(:medium) %></br><%=promotion.details %></td>
   </tr>
 
 </table></br>  
@@ -26,6 +26,6 @@
 <% end %>
 <%= link_to 'Back', stall_path(@stall) , class: "btn btn-info" %>
 </div>
-<div class="column2 side2">
+<div class="column2 side2" style="width: 20%;">
 </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="row2">
-<div class="column2 side2">
+<div class="column2 side2" style="width: 20%;">
 </div>
-<div class="column2 middle2">
+<div class="column2 middle2" style="width: 60%;">
  <% if user_signed_in? -%>
  <% if current_user.company.present? %>
 <% if current_user.company.stall.present? -%>
@@ -22,7 +22,7 @@
     <th> <%=  broucher.title %></th>
     </tr>
     <tr>
-   <td > <%= link_to "Download", broucher.document_url , class: "btn btn-primary" %></td>
+   <td > <%= link_to "Download", broucher.document_url , class: "btn btn-default" %></td>
  	</tr>
  	</table></br>
       
@@ -38,6 +38,6 @@
   <%= link_to 'Back', stall_path(@stall), class: "btn btn-info"  %>
    
 </div>
-<div class="column2 side2">
+<div class="column2 side2" style="width: 20%;">
 </div>
 </div>

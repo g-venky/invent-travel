@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114133556) do
+ActiveRecord::Schema.define(version: 20171116082201) do
 
   create_table "brouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -279,7 +279,7 @@ ActiveRecord::Schema.define(version: 20171114133556) do
     t.integer "failed_attempts"
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.integer "mobile"
+    t.bigint "mobile"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

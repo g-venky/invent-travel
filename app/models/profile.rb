@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
 	  validates :designation, presence: true
 	   validates :segments, presence: true
 	    validates :branches, presence: true
-	    	 validates :website, presence: true
+	   validates :website, presence: true
 	  validates :employees, presence: true
 	   validates :firstname, presence: true
 	    validates :lastname, presence: true

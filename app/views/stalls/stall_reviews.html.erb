@@ -1,29 +1,21 @@
 <div class="row2">
-<div class="column2 side2">
+<div class="column2 side2" style="width: 20%;">
 </div>
-<div class="column2 middle2">
+<div class="column2 middle2" style="width: 60%;">
 <%= simple_form_for [@stall, Review.new]  do |f| %>
-<h3 style="color: lightblue;">Write Review</h3>
-  <div class="form-group">
-    <%= label_tag 'rating_average','average'  %>
-    <%= check_box_tag 'review[rating][]','average',checked('average'),id: 'rating_average' %>
-  </div>
-  <div class="form-group">
-    <%= label_tag 'rating_good','good'  %>
-    <%= check_box_tag 'review[rating][]','good',checked('good'),id: 'rating_good' %>
-  </div>
-  <div class="form-group">
-    <%= label_tag 'rating_excellent','excellent'  %>
-    <%= check_box_tag 'review[rating][]','excellent',checked('excellent'),id: 'rating_excellent' %>
-  </div>
+<h3 >Write Review</h3>
+
 
     <div class="form-group">
-    <%= f.text_area :body, class: "form-control" %>
+    <%= f.radio_button :rating, 'average' %>Average</br>
+    <%= f.radio_button :rating, 'good' %>Good</br>
+    <%= f.radio_button :rating, 'excellent' %>Excellent</br>
+    <%= f.text_area :body %></br>
   
   <%= f.submit "Add review", class: "btn btn-primary" %>
 <% end %></div></br>
 <div id="reviews">
-  <%= render :partial => @stall.reviews %>
+  <%= render :partial => @stall.reviews.order(created_at: :desc) %>
 </div>
 
 <ul class="nav navbar-nav navbar-left">
@@ -32,6 +24,6 @@
 
 
 </div>
-<div class="column2 side2">
+<div class="column2 side2" style="width: 20%;">
 </div>
 </div>

@@ -1,6 +1,10 @@
 class Topic < ApplicationRecord
-	acts_as_votable
+	
 	belongs_to :user
 	has_many :comments
-	 has_many :users, through: :comments
+	has_many :users, through: :comments
+
+	validates :discussions, presence: true
+	validates :details, presence: true
+
 end
