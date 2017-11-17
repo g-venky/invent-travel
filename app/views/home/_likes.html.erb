@@ -1,11 +1,11 @@
+<ul id = 'lk'>
 <% if user_signed_in? && current_user.likes?(promotion) %>
-  <button ><%= link_to "Unlike", promotion_like_path(promotion), method: :delete, remote: true %></button>
+  <li > <i class="glyphicon glyphicon-thumbs-up"></i>   <%= link_to "Unlikes" , promotion_like_path(promotion), method: :delete, remote: true %>  <%= promotion.likes.count %></li>
 <% else %>
 		
-  <button><%= link_to "Like", promotion_like_path(promotion), method: :post, remote: true %></button>
+  <li> <i class="glyphicon glyphicon-thumbs-up"></i>    <%= link_to "Likes", promotion_like_path(promotion), method: :post, remote: true %>   <%= promotion.likes.count %></li>
 <% end %>
 
-
-<button><%= promotion.likes.count %></button>
+</ul>
 
 

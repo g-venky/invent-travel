@@ -3,9 +3,9 @@
 </div>
 <div class="column2 middle2">
 
-
+<% if @profile.user ==current_user  %>
 <h4 style="text-align:right; "><%= link_to 'Edit Profile', edit_profile_path(@profile) , class: "btn btn-info" %></h4> 
-
+<% end %>
 <p id="notice"><%= notice %></p>
 <table>
 <p>

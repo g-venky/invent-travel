@@ -46,7 +46,7 @@ get 'stalls/:id/stall_contacts' => 'stalls#stall_contacts', :as => :custom_stall
 #get 'stalls/:id/stall_my_doubts' => 'stalls#stall_my_doubts', :as => :custom_stall_my_doubts
 get 'my_doubts/:id/my_doubt_doubts' => 'my_doubts#my_doubt_doubts', :as => :custom_my_doubt_doubts
 get 'my_queries/:id/my_query_queries' => 'my_queries#my_query_queries', :as => :custom_my_query_queries
-  
+
 	root to: "home#index"
   get 'home/stall'
   root  'home#stall'
@@ -54,6 +54,8 @@ get 'my_queries/:id/my_query_queries' => 'my_queries#my_query_queries', :as => :
   root 'home#operator'
   get 'home/online_stall'
   root 'home#online_stall'
+   get 'home/show'
+  root 'home#show'
   
 
 	     resources :comments #do

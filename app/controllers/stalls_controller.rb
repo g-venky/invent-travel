@@ -8,6 +8,7 @@ class StallsController < ApplicationController
             session[:conversations] ||= []
  
     @users = User.all.where.not(id: current_user)
+    @users = User.order(created_at: :desc)
   
     @conversations = Conversation.includes(:recipient, :messages)
                                  .find(session[:conversations])
@@ -17,6 +18,7 @@ class StallsController < ApplicationController
    def stall_promotions
  @stall = Stall.find(params[:id])
  @promotions = @stall.promotions
+ @promotions=Promotion.order(created_at: :desc)
 
  #render plain: {posts: @posts.inspect, user: @user.inspect} 
 end

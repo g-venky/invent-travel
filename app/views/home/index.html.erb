@@ -19,8 +19,18 @@
    <li> <%= link_to 'My Profile',new_profile_path %></li>
   <% end %>
    <li> <%= link_to "My contact list", contacts_path  %></li>
-
+   </ul>
+   <h4  style="color: blue;">Recent registered users </h4>
+   <ul id='b' style="background-color: lightgray;">
+<% @users.each do |user| %>
+  <% if user.profile.present? %>
+    <li style="margin-bottom: 0px; border-bottom: 1px solid white;" ><%= link_to   user.email ,profile_path(user.profile) %></li>
+    <% else %>
+     <li style="margin-bottom: 0px;border-bottom: 1px solid white;" ><%= link_to   user.email ,home_online_stall_path %></li>
+  <% end %>
+<% end %>
 </ul>
+
 </div> 
 <div class="column middle">
 

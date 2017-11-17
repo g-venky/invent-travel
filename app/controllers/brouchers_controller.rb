@@ -36,7 +36,7 @@ end
 
     respond_to do |format|
       if @broucher.save
-        format.html { redirect_to @broucher, notice: 'Broucher was successfully created.' }
+        format.html { redirect_to @broucher.stall, notice: 'Broucher was successfully created.' }
         format.json { render :show, status: :created, location: @broucher }
       else
         format.html { render :new }

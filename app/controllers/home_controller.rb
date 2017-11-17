@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	  
+
 	def index
 		    session[:conversations] ||= []
  
@@ -10,22 +10,21 @@ class HomeController < ApplicationController
 
 		   @promotions=Promotion.order(created_at: :desc)
 		@topics = Topic.all
+	 @users=User.order(created_at: :desc).limit(15)
 		
-
 	end
 	
 	def home_stall
-
-
 	end
-	def operator
 
+	def operator
+		
 	end	
 	def online_stall
-		@promotions = Promotion.where(@seller)
-		@abouts = About.all
-		   @offices = Office.all
+
 
 	end
+
+
 
 end
