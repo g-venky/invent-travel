@@ -10,12 +10,5 @@
    <tr>
    <td ><%= image_tag @promotion.image.url(:medium) %></br><%= @promotion.details %></td>
   </tr>
-  <tr>
-   <td>  <%= link_to like_promotion_path(@promotion), method: :put, class: "btn btn-info" do %>
-       <i class="glyphicon glyphicon-thumbs-up"></i>
-  Like
-    <%= @promotion.get_upvotes.size %>
-  <% end %>
-</td>
-  </tr>
+
 </table></br> 

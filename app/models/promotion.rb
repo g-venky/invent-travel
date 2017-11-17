@@ -5,6 +5,7 @@ class Promotion < ApplicationRecord
 
 	belongs_to :stall
 	has_many :usefuls
+	has_many :likes
 	validates :details, presence: true
 	validates :destination, presence: true
 end

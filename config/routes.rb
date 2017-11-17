@@ -68,11 +68,9 @@ get 'my_queries/:id/my_query_queries' => 'my_queries#my_query_queries', :as => :
        
    
 	resources :promotions do
-    	member do
-              put "like",    to:    "promotions#upvote"
-          put "dislike", to:    "promotions#downvote"
-      	
-    	end
+
+    resource :like, module: :promotions
+ 
    	end
   	resources :my_doubts do
   		resources :replies

@@ -147,13 +147,10 @@
    <td > <a href="<%=promotion.image.url(:original) %>" target="_blank"><%= image_tag promotion.image.url(:medium) %></a></br><%=promotion.details %></td>
   </tr>
   </tr>
-  <tr>
-   <td> <%= link_to like_promotion_path(promotion), method: :put, class: "btn btn-info btn-sm" do %>
-       <i class="glyphicon glyphicon-thumbs-up"></i>
-        like
-        <%= promotion.get_likes.size %>
-      <% end %></td>
+ <tr>
+   <td>  <div id="promotion_<%= promotion.id %>_likes"><%= render partial: "likes", locals: {promotion: promotion} %></div></td>
   </tr>
+  
 </table></br>  
 <% end %>
 <% end %>

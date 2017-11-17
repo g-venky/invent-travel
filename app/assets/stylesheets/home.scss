@@ -185,3 +185,8 @@ h6 a:hover:not(.active) {
     padding: 10px;
 
 }
+button a:hover:not(.active) {
+    background-color: skyblue;
+    text-decoration: none;
+    color: white;
+}

@@ -23,7 +23,7 @@
 <% if user_signed_in? -%>
 								 <li class="active" style="background-color: gray; "><%= link_to "Invent Travel" , root_path  %></li>
 
-								 	<li style="float: right;"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete  %></li>
+								 	<li style="float: right;"><i style="float: right; font-size: 20px; text-align: center;" class="glyphicon glyphicon-user"></i><%= link_to 'Sign out', destroy_user_session_path, :method => :delete  %></li>
 							<li style="float: right;"><%= link_to 'Become Seller', home_stall_path %></li>
 							        	
         	        <li  style="float: right;"  data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>

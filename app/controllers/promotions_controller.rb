@@ -1,9 +1,9 @@
 class PromotionsController < ApplicationController
-  before_action :set_promotion, only: [:vote,:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:vote,:index]
+  before_action :set_promotion, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   # GET /promotions
   # GET /promotions.json
-  respond_to :js, :json, :html
+
   def index
 
       @promotions=Promotion.order(created_at: :desc)
@@ -41,7 +41,7 @@ end
 
     respond_to do |format|
       if @promotion.save
-        format.html { redirect_to @promotion, notice: 'Promotion was successfully created.' }
+        format.html { redirect_to @promotion.stall, notice: 'Promotion was successfully created.' }
         format.json { render :show, status: :created, location: @promotion }
       else
         format.html { render :new }
@@ -72,25 +72,6 @@ end
       format.html { redirect_to promotions_url, notice: 'Promotion was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-     def vote
-      @promotion = Promotion.find params[:promotion_id]
-
-      vote = current_user.votes.find _or_create_by promotion_id: params[:promotion_id]
-      vote.toggle(:vote)
-
-      respond_with vote
-   end
-      def upvote
-    @promotion = Promotion.find(params[:id])
-    @promotion.upvote_by current_user
-    redirect_back fallback_location: root_path
-  end
-
-  def downvote
-    @promotion = Promotion.find(params[:id])
-    @promotion.downvote_from current_user
-    redirect_to :promotion
   end
 
 

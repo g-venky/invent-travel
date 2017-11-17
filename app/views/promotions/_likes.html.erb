@@ -1,0 +1,10 @@
+<% if user_signed_in? && current_user.likes?(promotion) %>
+  <button><%= link_to "Unlike", promotion_like_path(promotion), method: :delete, remote: true %></button>
+<% else %>
+		
+  <button  ><%= link_to "Like", promotion_like_path(promotion), method: :post, remote: true %></button>
+<% end %>
+
+<button><%= promotion.likes.count %></button>
+
+

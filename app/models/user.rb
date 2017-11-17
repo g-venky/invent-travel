@@ -16,4 +16,15 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :recipient_id
  
   	
+  has_many :likes
+
+  def likes?(promotion)
+
+    promotion.likes.where(user_id: id).any?
+  end
+    def avatar_url
+    hash = Digest::MD5.hexdigest(email)
+    "http://www.gravatar.com/avatar/#{hash}"
+  end
+
 end
